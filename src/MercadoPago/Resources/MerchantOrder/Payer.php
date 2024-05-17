@@ -5,11 +5,11 @@ namespace MercadoPago\Resources\MerchantOrder;
 class Payer
 {
     /** Payer ID. */
-    public ?int $id;
+    public $id;
 
     /** Payer nickname. */
-    public ?string $nickname;
+    public $nickname;
 
     /** Payer email. */
-    public ?string $email;
+    public $email;
 }

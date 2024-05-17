@@ -6,10 +6,10 @@ namespace MercadoPago\Client\Point;
 class PointPaymentIntentListRequest
 {
     /** Start date. */
-    public string $start_date;
+    public $start_date;
 
     /** End date. */
-    public string $end_date;
+    public $end_date;
 
     public function getParameters(): array
     {

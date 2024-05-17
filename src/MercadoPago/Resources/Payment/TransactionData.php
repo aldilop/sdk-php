@@ -11,28 +11,28 @@ class TransactionData
     use Mapper;
 
     /** QR code. */
-    public ?string $qr_code;
+    public $qr_code;
 
     /** QR code image in Base 64. */
-    public ?string $qr_code_base64;
+    public $qr_code_base64;
 
     /** Transaction ID. */
-    public ?string $transaction_id;
+    public $transaction_id;
 
     /** Bank transfer ID. */
-    public ?int $bank_transfer_id;
+    public $bank_transfer_id;
 
     /** Financial institution. */
-    public ?int $financial_institution;
+    public $financial_institution;
 
     /** Bank info. */
-    public array|object|null $bank_info;
+    public $bank_info;
 
     /** Ticket Url. */
-    public ?string $ticket_url;
+    public $ticket_url;
 
     /** E2E ID. */
-    public ?string $e2e_id;
+    public $e2e_id;
 
     private $map = [
         "bank_info" => "MercadoPago\Resources\Payment\BankInfo",

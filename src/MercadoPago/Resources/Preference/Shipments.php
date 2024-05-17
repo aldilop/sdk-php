@@ -11,31 +11,31 @@ class Shipments
     use Mapper;
 
     /** Shipment mode. */
-    public ?string $mode;
+    public $mode;
 
     /** The payer have the option to pick up the shipment in your store (mode:me2 only). */
-    public ?bool $local_pickup;
+    public $local_pickup;
 
     /** Dimensions of the shipment in cm x cm x cm, gr (mode:me2 only). */
-    public ?string $dimensions;
+    public $dimensions;
 
     /** Select default shipping method in checkout (mode:me2 only). */
-    public ?int $default_shipping_method;
+    public $default_shipping_method;
 
     /** Offer a shipping method as free shipping (mode:me2 only). */
-    public ?array $free_methods;
+    public $free_methods;
 
     /** Shipment cost (mode:custom only). */
-    public ?float $cost;
+    public $cost;
 
     /** Free shipping for mode:custom. */
-    public ?bool $free_shipping;
+    public $free_shipping;
 
     /** Shipping address. */
-    public array|object|null $receiver_address;
+    public $receiver_address;
 
     /** If use express shipment. */
-    public ?bool $express_shipment;
+    public $express_shipment;
 
     public $map = [
       "free_methods" => "MercadoPago\Resources\Preference\FreeMethod",

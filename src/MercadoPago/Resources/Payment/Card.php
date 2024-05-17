@@ -11,28 +11,28 @@ class Card
     use Mapper;
 
     /** Id of the card. */
-    public ?string $id;
+    public $id;
 
     /** Last four digits of card number. */
-    public ?string $last_four_digits;
+    public $last_four_digits;
 
     /** First six digit of card number. */
-    public ?string $first_six_digits;
+    public $first_six_digits;
 
     /** Card expiration year. */
-    public ?int $expiration_year;
+    public $expiration_year;
 
     /** Card expiration month. */
-    public ?int $expiration_month;
+    public $expiration_month;
 
     /** Creation date of card. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Last update of data from the card. */
-    public ?string $date_last_updated;
+    public $date_last_updated;
 
     /** Card's owner data. */
-    public array|object|null $cardholder;
+    public $cardholder;
 
     private $map = [
         "cardholder" => "MercadoPago\Resources\Payment\Cardholder"

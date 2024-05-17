@@ -12,28 +12,28 @@ class PaymentIntent extends MPResource
     use Mapper;
 
     /** Additional info of the payment intent.*/
-    public array|object|null $additional_info;
+    public $additional_info;
 
     /** Amount of the payment intent.*/
-    public ?float $amount;
+    public $amount;
 
     /** Description of the payment intent.*/
-    public ?string $description;
+    public $description;
 
     /** Device id for the payment intent.*/
-    public ?string $device_id;
+    public $device_id;
 
     /** ID of the payment intent.*/
-    public ?string $id;
+    public $id;
 
     /** Payment intent details.*/
-    public array|object|null $payment;
+    public $payment;
 
     /** Payment intent mode.*/
-    public ?string $payment_mode;
+    public $payment_mode;
 
     /** State of the payment intent.*/
-    public ?string $state;
+    public $state;
 
     public $map = [
         "additional_info" => "MercadoPago\Resources\Point\PaymentIntentAdditionalInfo",

@@ -10,49 +10,49 @@ class ReceiverAddress
     use Mapper;
 
     /** Receiver address ID. */
-    public ?int $id;
+    public $id;
 
     /** Street name and number of receiver address. */
-    public ?string $address_line;
+    public $address_line;
 
     /** Apartment. */
-    public ?string $apartment;
+    public $apartment;
 
     /** City information. */
-    public array|object|null $city;
+    public $city;
 
     /** State information. */
-    public array|object|null $state;
+    public $state;
 
     /** Country information. */
-    public array|object|null $country;
+    public $country;
 
     /** Comment about receiver address. */
-    public ?string $comment;
+    public $comment;
 
     /** Contact information. */
-    public ?string $contact;
+    public $contact;
 
     /** Postal code. */
-    public ?string $zip_code;
+    public $zip_code;
 
     /** Street name. */
-    public ?string $street_name;
+    public $street_name;
 
     /** Street number. */
-    public ?string $street_number;
+    public $street_number;
 
     /** Floor. */
-    public ?string $floor;
+    public $floor;
 
     /** Phone. */
-    public ?string $phone;
+    public $phone;
 
     /** Latitude. */
-    public ?string $latitude;
+    public $latitude;
 
     /** Longitude. */
-    public ?string $longitude;
+    public $longitude;
 
     private $map = [
       "city" => "MercadoPago\Resources\MerchantOrder\ReceiverAddressCity",

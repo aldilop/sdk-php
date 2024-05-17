@@ -11,25 +11,25 @@ class AdditionalInfo
     use Mapper;
 
     /** IP from where the request comes from (only for bank transfers). */
-    public ?string $ip_address;
+    public $ip_address;
 
     /** List of items to be paid. */
-    public ?array $items;
+    public $items;
 
     /** Payer's information. */
-    public array|object|null $payer;
+    public $payer;
 
     /** Shipping information. */
-    public array|object|null $shipments;
+    public $shipments;
 
     /** Available Balance. */
-    public ?float $available_balance;
+    public $available_balance;
 
     /** NSU Processadora. */
-    public ?string $nsu_processadora;
+    public $nsu_processadora;
 
     /** Authentication Code. */
-    public ?string $authentication_code;
+    public $authentication_code;
 
     private $map = [
       "payer" => "MercadoPago\Resources\Payment\AdditionalInfoPayer",

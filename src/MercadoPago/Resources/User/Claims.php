@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\User;
 class Claims
 {
     /** The claims period (e.g., "365 days"). */
-    public ?string $period;
+    public $period;
 
     /** The claims rate (percentage). */
-    public ?float $rate;
+    public $rate;
 
     /** The claims value. */
-    public ?float $value;
+    public $value;
 }

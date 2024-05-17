@@ -5,11 +5,11 @@ namespace MercadoPago\Resources\MerchantOrder;
 class Collector
 {
     /** Collector ID. */
-    public ?int $id;
+    public $id;
 
     /** Collector nickname. */
-    public ?string $nickname;
+    public $nickname;
 
     /** Email. */
-    public ?string $email;
+    public $email;
 }

@@ -6,5 +6,5 @@ namespace MercadoPago\Resources\User;
 class Context
 {
     /** The user's IP address. */
-    public ?string $ip_address;
+    public $ip_address;
 }

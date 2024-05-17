@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\Preference;
 class TrackValues
 {
     /** conversion_id for GTM Google Ads Conversion Tracking tag. */
-    public ?string $conversion_id;
+    public $conversion_id;
 
     /** conversion_label for GTM Google Ads Conversion Tracking tag. */
-    public ?string $conversion_label;
+    public $conversion_label;
 
     /** pixel_id for Facebook Pixel. */
-    public ?string $pixel_id;
+    public $pixel_id;
 }

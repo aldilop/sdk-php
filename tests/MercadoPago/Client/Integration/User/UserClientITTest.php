@@ -13,12 +13,12 @@ use PHPUnit\Framework\TestCase;
  */
 final class UserClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new UserClient();
         $user = $client->get();
@@ -26,7 +26,7 @@ final class UserClientITTest extends TestCase
         $this->assertNotNull($user->site_id);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new UserClient();

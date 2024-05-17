@@ -6,5 +6,5 @@ namespace MercadoPago\Resources\Preference;
 class DifferentialPricing
 {
     /** Differential pricing ID. */
-    public ?int $id;
+    public $id;
 }

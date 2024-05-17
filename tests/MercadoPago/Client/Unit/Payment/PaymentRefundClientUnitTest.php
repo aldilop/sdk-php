@@ -12,7 +12,7 @@ use MercadoPago\Tests\Client\Unit\Base\BaseClient;
  */
 final class PaymentRefundClientUnitTest extends BaseClient
 {
-    public function testCreateRefundSuccess(): void
+    public function testCreateRefundSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Payment/payment_refund.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -25,15 +25,15 @@ final class PaymentRefundClientUnitTest extends BaseClient
         $amount = 10.0;
 
         $refund_result = $client->refund($payment_id, $amount);
-        $this->assertSame(200, $refund_result->getResponse()->getStatusCode());
-        $this->assertSame($payment_id, $refund_result->payment_id);
-        $this->assertSame($amount, $refund_result->amount);
-        $this->assertSame("2023-08-24T15:35:15.783-04:00", $refund_result->date_created);
-        $this->assertSame("approved", $refund_result->status);
-        $this->assertSame("Firstname Lastname", $refund_result->source->name);
+        $this->assertEquals(200, $refund_result->getResponse()->getStatusCode());
+        $this->assertEquals($payment_id, $refund_result->payment_id);
+        $this->assertEquals($amount, $refund_result->amount);
+        $this->assertEquals("2023-08-24T15:35:15.783-04:00", $refund_result->date_created);
+        $this->assertEquals("approved", $refund_result->status);
+        $this->assertEquals("Firstname Lastname", $refund_result->source->name);
     }
 
-    public function testCreateRefundTotalSuccess(): void
+    public function testCreateRefundTotalSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Payment/payment_refund.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -45,15 +45,15 @@ final class PaymentRefundClientUnitTest extends BaseClient
         $payment_id = 18552260055;
 
         $refund_result = $client->refundTotal($payment_id);
-        $this->assertSame(200, $refund_result->getResponse()->getStatusCode());
-        $this->assertSame($payment_id, $refund_result->payment_id);
-        $this->assertSame(10.0, $refund_result->amount);
-        $this->assertSame("2023-08-24T15:35:15.783-04:00", $refund_result->date_created);
-        $this->assertSame("approved", $refund_result->status);
-        $this->assertSame("Firstname Lastname", $refund_result->source->name);
+        $this->assertEquals(200, $refund_result->getResponse()->getStatusCode());
+        $this->assertEquals($payment_id, $refund_result->payment_id);
+        $this->assertEquals(10.0, $refund_result->amount);
+        $this->assertEquals("2023-08-24T15:35:15.783-04:00", $refund_result->date_created);
+        $this->assertEquals("approved", $refund_result->status);
+        $this->assertEquals("Firstname Lastname", $refund_result->source->name);
     }
 
-    public function testGetRefundSuccess(): void
+    public function testGetRefundSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Payment/payment_refund.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -66,15 +66,15 @@ final class PaymentRefundClientUnitTest extends BaseClient
         $refund_id = 1009042015;
 
         $refund_result = $client->get($payment_id, $refund_id);
-        $this->assertSame(200, $refund_result->getResponse()->getStatusCode());
-        $this->assertSame($payment_id, $refund_result->payment_id);
-        $this->assertSame(10.0, $refund_result->amount);
-        $this->assertSame("2023-08-24T15:35:15.783-04:00", $refund_result->date_created);
-        $this->assertSame("approved", $refund_result->status);
-        $this->assertSame("Firstname Lastname", $refund_result->source->name);
+        $this->assertEquals(200, $refund_result->getResponse()->getStatusCode());
+        $this->assertEquals($payment_id, $refund_result->payment_id);
+        $this->assertEquals(10.0, $refund_result->amount);
+        $this->assertEquals("2023-08-24T15:35:15.783-04:00", $refund_result->date_created);
+        $this->assertEquals("approved", $refund_result->status);
+        $this->assertEquals("Firstname Lastname", $refund_result->source->name);
     }
 
-    public function testListRefundSuccess(): void
+    public function testListRefundSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Payment/payment_refund_list.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -86,21 +86,21 @@ final class PaymentRefundClientUnitTest extends BaseClient
         $payment_id = 18552260055;
 
         $refund_result = $client->list($payment_id);
-        $this->assertSame(200, $refund_result->getResponse()->getStatusCode());
-        $this->assertSame(2, count($refund_result->data));
+        $this->assertEquals(200, $refund_result->getResponse()->getStatusCode());
+        $this->assertEquals(2, count($refund_result->data));
 
-        $this->assertSame($payment_id, $refund_result->data[0]->payment_id);
-        $this->assertSame(1009042015, $refund_result->data[0]->id);
-        $this->assertSame(5.0, $refund_result->data[0]->amount);
-        $this->assertSame("2023-08-24T15:35:15.783-04:00", $refund_result->data[0]->date_created);
-        $this->assertSame("approved", $refund_result->data[0]->status);
-        $this->assertSame("Test Test", $refund_result->data[0]->source->name);
+        $this->assertEquals($payment_id, $refund_result->data[0]->payment_id);
+        $this->assertEquals(1009042015, $refund_result->data[0]->id);
+        $this->assertEquals(5.0, $refund_result->data[0]->amount);
+        $this->assertEquals("2023-08-24T15:35:15.783-04:00", $refund_result->data[0]->date_created);
+        $this->assertEquals("approved", $refund_result->data[0]->status);
+        $this->assertEquals("Test Test", $refund_result->data[0]->source->name);
 
-        $this->assertSame($payment_id, $refund_result->data[1]->payment_id);
-        $this->assertSame(1009042016, $refund_result->data[1]->id);
-        $this->assertSame(5.0, $refund_result->data[1]->amount);
-        $this->assertSame("2023-08-24T15:35:15.783-04:00", $refund_result->data[1]->date_created);
-        $this->assertSame("approved", $refund_result->data[1]->status);
-        $this->assertSame("Test Test", $refund_result->data[1]->source->name);
+        $this->assertEquals($payment_id, $refund_result->data[1]->payment_id);
+        $this->assertEquals(1009042016, $refund_result->data[1]->id);
+        $this->assertEquals(5.0, $refund_result->data[1]->amount);
+        $this->assertEquals("2023-08-24T15:35:15.783-04:00", $refund_result->data[1]->date_created);
+        $this->assertEquals("approved", $refund_result->data[1]->status);
+        $this->assertEquals("Test Test", $refund_result->data[1]->source->name);
     }
 }

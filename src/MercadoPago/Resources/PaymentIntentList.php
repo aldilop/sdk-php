@@ -12,7 +12,7 @@ class PaymentIntentList extends MPResource
     use Mapper;
 
     /** Events. */
-    public array|object|null $events;
+    public $events;
 
     private $map = [
         "events" => "MercadoPago\Resources\Point\Events",

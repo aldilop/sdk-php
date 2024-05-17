@@ -6,17 +6,17 @@ namespace MercadoPago\Client\OAuth;
 class OAuthCreateRequest
 {
     /** Client secret. */
-    public string $client_secret;
+    public $client_secret;
 
     /** Client ID. */
-    public string $client_id;
+    public $client_id;
 
     /** Grant type. */
-    public string $grant_type = "authorization_code";
+    public $grant_type = "authorization_code";
 
     /** Code. */
-    public string $code;
+    public $code;
 
     /** Redirect URI. */
-    public string $redirect_uri;
+    public $redirect_uri;
 }

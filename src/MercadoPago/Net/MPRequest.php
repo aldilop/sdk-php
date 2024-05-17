@@ -5,6 +5,12 @@ namespace MercadoPago\Net;
 /** MPRequest class. */
 class MPRequest
 {
+    private $uri;
+    private $method;
+    private $payload;
+    private $headers;
+    private $connection_timeout;
+
     /**
      * MPRequest constructor.
      * @param string $uri path to be requested.
@@ -14,12 +20,17 @@ class MPRequest
      * @param int $connection_timeout connection timeout to be sent.
      */
     public function __construct(
-        private string $uri,
-        private string $method,
-        private ?string $payload = null,
-        private ?array $headers = null,
-        private ?int $connection_timeout = null
+        string $uri,
+        string $method,
+        string $payload = null,
+        array $headers = null,
+        int $connection_timeout = null
     ) {
+        $this->uri = $uri;
+        $this->method = $method;
+        $this->payload = $payload;
+        $this->headers = $headers;
+        $this->connection_timeout = $connection_timeout;
     }
 
     /**
@@ -44,7 +55,7 @@ class MPRequest
      * Get headers.
      * @return array headers.
      */
-    public function getHeaders(): ?array
+    public function getHeaders()
     {
         return $this->headers;
     }
@@ -53,7 +64,7 @@ class MPRequest
      * Get payload.
      * @return string payload.
      */
-    public function getPayload(): ?string
+    public function getPayload()
     {
         return $this->payload;
     }
@@ -62,7 +73,7 @@ class MPRequest
      * Get connection timeout.
      * @return int connection timeout.
      */
-    public function getConnectionTimeout(): ?int
+    public function getConnectionTimeout()
     {
         return $this->connection_timeout;
     }

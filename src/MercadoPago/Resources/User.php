@@ -12,88 +12,88 @@ class User extends MPResource
     use Mapper;
 
     /** The user's ID. */
-    public ?int $id;
+    public $id;
 
     /** The user's nickname. */
-    public ?string $nickname;
+    public $nickname;
 
     /** The registration date and time. */
-    public ?string $registration_date;
+    public $registration_date;
 
     /** The user's first name. */
-    public ?string $first_name;
+    public $first_name;
 
     /** The user's last name. */
-    public ?string $last_name;
+    public $last_name;
 
     /** The user's gender. */
-    public ?string $gender;
+    public $gender;
 
     /** The country ID (e.g., "BR" for Brazil). */
-    public ?string $country_id;
+    public $country_id;
 
     /** The user's email. */
-    public ?string $email;
+    public $email;
 
     /** User identification data. */
-    public array|object|null $identification;
+    public $identification;
 
     /** User address data. */
-    public array|object|null $address;
+    public $address;
 
     /** User phone data. */
-    public array|object|null $phone;
+    public $phone;
 
     /** User alternative phone data. */
-    public array|object|null $alternative_phone;
+    public $alternative_phone;
 
     /** The user type (e.g., "normal"). */
-    public ?string $user_type;
+    public $user_type;
 
     /** User tags. */
-    public ?array $tags;
+    public $tags;
 
     /** User logo. */
     public $logo;
 
     /** User points. */
-    public ?int $points;
+    public $points;
 
     /** The site ID (e.g., "MLB" for MercadoLibre Brazil). */
-    public ?string $site_id;
+    public $site_id;
 
     /** User permalink. */
-    public ?string $permalink;
+    public $permalink;
 
     /** Seller experience (e.g., "NEWBIE"). */
-    public ?string $seller_experience;
+    public $seller_experience;
 
     /** User bill data. */
-    public array|object|null $bill_data;
+    public $bill_data;
 
     /** User seller reputation data. */
-    public array|object|null $seller_reputation;
+    public $seller_reputation;
 
     /** User buyer reputation data. */
-    public array|object|null $buyer_reputation;
+    public $buyer_reputation;
 
     /** User status data. */
-    public array|object|null $status;
+    public $status;
 
     /** Secure email. */
-    public ?string $secure_email;
+    public $secure_email;
 
     /** User company data. */
-    public array|object|null $company;
+    public $company;
 
     /** User credit data. */
-    public array|object|null $credit;
+    public $credit;
 
     /** User context data. */
-    public array|object|null $context;
+    public $context;
 
     /** User registration identifiers. */
-    public ?array $registration_identifiers;
+    public $registration_identifiers;
 
     public $map = [
         "identification" => "MercadoPago\Resources\Common\Identification",

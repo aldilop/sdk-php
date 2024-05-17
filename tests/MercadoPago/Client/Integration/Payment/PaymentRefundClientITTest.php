@@ -15,12 +15,12 @@ use PHPUnit\Framework\TestCase;
  */
 final class PaymentRefundClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testRefundPartialSuccess(): void
+    public function testRefundPartialSuccess()
     {
         $client = new CardTokenClient();
         $card_token = $client->create($this->createCardTokenRequest());
@@ -33,11 +33,11 @@ final class PaymentRefundClientITTest extends TestCase
         $refund_client = new PaymentRefundClient();
         $refund = $refund_client->refund($payment->id, 50);
         $this->assertNotNull($refund->id);
-        $this->assertSame(50.0, $refund->amount);
-        $this->assertSame("approved", $refund->status);
+        $this->assertEquals(50.0, $refund->amount);
+        $this->assertEquals("approved", $refund->status);
     }
 
-    public function testRefundPartialWithRequestOptionsFailure(): void
+    public function testRefundPartialWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
 
@@ -55,7 +55,7 @@ final class PaymentRefundClientITTest extends TestCase
         $refund_client->refund($payment->id, 50, $request_options);
     }
 
-    public function testRefundTotalSuccess(): void
+    public function testRefundTotalSuccess()
     {
         $client = new CardTokenClient();
         $card_token = $client->create($this->createCardTokenRequest());
@@ -68,11 +68,11 @@ final class PaymentRefundClientITTest extends TestCase
         $refund_client = new PaymentRefundClient();
         $refund = $refund_client->refundTotal($payment->id);
         $this->assertNotNull($refund->id);
-        $this->assertSame(100.0, $refund->amount);
-        $this->assertSame("approved", $refund->status);
+        $this->assertEquals(100.0, $refund->amount);
+        $this->assertEquals("approved", $refund->status);
     }
 
-    public function testRefundTotalWithRequestOptionsFailure(): void
+    public function testRefundTotalWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
 
@@ -90,7 +90,7 @@ final class PaymentRefundClientITTest extends TestCase
         $refund_client->refundTotal($payment->id, $request_options);
     }
 
-    public function testGetRefundSuccess(): void
+    public function testGetRefundSuccess()
     {
         $client = new CardTokenClient();
         $card_token = $client->create($this->createCardTokenRequest());
@@ -105,11 +105,11 @@ final class PaymentRefundClientITTest extends TestCase
         $this->assertNotNull($refund->id);
 
         $get_refund = $refund_client->get($payment->id, $refund->id);
-        $this->assertSame(100.0, $get_refund->amount);
-        $this->assertSame("approved", $get_refund->status);
+        $this->assertEquals(100.0, $get_refund->amount);
+        $this->assertEquals("approved", $get_refund->status);
     }
 
-    public function testGetRefundWithRequestOptionsFailure(): void
+    public function testGetRefundWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
 
@@ -130,7 +130,7 @@ final class PaymentRefundClientITTest extends TestCase
         $refund_client->get($payment->id, $refund->id, $request_options);
     }
 
-    public function testListRefundSuccess(): void
+    public function testListRefundSuccess()
     {
         $client = new CardTokenClient();
         $card_token = $client->create($this->createCardTokenRequest());
@@ -148,16 +148,16 @@ final class PaymentRefundClientITTest extends TestCase
         $this->assertNotNull($refund_two->id);
 
         $list_refund = $refund_client->list($payment->id);
-        $this->assertSame(2, count($list_refund->data));
+        $this->assertEquals(2, count($list_refund->data));
 
-        $this->assertSame(20.0, $list_refund->data[0]->amount);
-        $this->assertSame("approved", $list_refund->data[0]->status);
+        $this->assertEquals(20.0, $list_refund->data[0]->amount);
+        $this->assertEquals("approved", $list_refund->data[0]->status);
 
-        $this->assertSame(30.0, $list_refund->data[1]->amount);
-        $this->assertSame("approved", $list_refund->data[1]->status);
+        $this->assertEquals(30.0, $list_refund->data[1]->amount);
+        $this->assertEquals("approved", $list_refund->data[1]->status);
     }
 
-    public function testListRefundWithRequestOptionsFailure(): void
+    public function testListRefundWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
 

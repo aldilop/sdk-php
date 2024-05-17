@@ -5,6 +5,10 @@ namespace MercadoPago\Client\Common;
 /** RequestOptions class. */
 class RequestOptions
 {
+    private $access_token;
+    private $connection_timeout;
+    private $custom_headers;
+
     /**
      * RequestOptions constructor.
      * @param string|null $access_token access token to be used.
@@ -12,17 +16,20 @@ class RequestOptions
      * @param array|null $custom_headers custom headers to be used.
      */
     public function __construct(
-        private ?string $access_token = null,
-        private  ?int $connection_timeout = null,
-        private  ?array $custom_headers = null
+        string $access_token = null,
+        int $connection_timeout = null,
+        array $custom_headers = null
     ) {
+        $this->access_token = $access_token;
+        $this->connection_timeout = $connection_timeout;
+        $this->custom_headers = $custom_headers;
     }
 
     /**
      * Get access token.
      * @return string|null access token.
      */
-    public function getAccessToken(): string | null
+    public function getAccessToken()
     {
         return $this->access_token;
     }
@@ -32,7 +39,7 @@ class RequestOptions
      * @param string $access_token access token to be set.
      * @return void access token.
      */
-    public function setAccessToken(string $access_token): void
+    public function setAccessToken(string $access_token)
     {
         $this->access_token = $access_token;
     }
@@ -41,7 +48,7 @@ class RequestOptions
      * Get connection timeout.
      * @return int|null connection timeout.
      */
-    public function getConnectionTimeout(): int | null
+    public function getConnectionTimeout()
     {
         return $this->connection_timeout;
     }
@@ -51,7 +58,7 @@ class RequestOptions
      * @param int $connection_timeout connection timeout to be set.
      * @return void connection timeout.
      */
-    public function setConnectionTimeout(int $connection_timeout): void
+    public function setConnectionTimeout(int $connection_timeout)
     {
         $this->connection_timeout = $connection_timeout;
     }
@@ -60,7 +67,7 @@ class RequestOptions
      * Get custom headers.
      * @return array|null custom headers.
      */
-    public function getCustomHeaders(): array | null
+    public function getCustomHeaders()
     {
         return $this->custom_headers;
     }
@@ -70,7 +77,7 @@ class RequestOptions
      * @param array $custom_headers custom headers to be set.
      * @return void custom headers.
      */
-    public function setCustomHeaders(array $custom_headers): void
+    public function setCustomHeaders(array $custom_headers)
     {
         $this->custom_headers = $custom_headers;
     }

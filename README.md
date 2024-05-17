@@ -221,7 +221,7 @@ function createPreferenceRequest($items, $payer): array
 ### Step 4: Create the preference on Mercado Pago ([DOCS](https://www.mercadopago.com.br/developers/pt/docs/sdks-library/server-side/php/preferences))
 
 ```php
-public function createPaymentPreference(): ?Preference
+public function createPaymentPreference()
 {
     // Fill the data about the product(s) being pruchased
     $product1 = array(

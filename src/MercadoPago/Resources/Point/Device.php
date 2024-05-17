@@ -6,17 +6,17 @@ namespace MercadoPago\Resources\Point;
 class Device
 {
     /** Device ID. */
-    public ?string $id;
+    public $id;
 
     /** POS ID. */
-    public ?int $pos_id;
+    public $pos_id;
 
     /** Store ID. */
-    public ?int $store_id;
+    public $store_id;
 
     /** External POS ID. */
-    public ?string $external_pos_id;
+    public $external_pos_id;
 
     /** Operating mode. */
-    public ?string $operating_mode;
+    public $operating_mode;
 }

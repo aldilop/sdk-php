@@ -12,52 +12,52 @@ class CardToken extends MPResource
     use Mapper;
 
     /** Id of the card. */
-    public ?string $id;
+    public $id;
 
     /** Last four digits of card number. */
-    public ?string $last_four_digits;
+    public $last_four_digits;
 
     /** First six digit of card number. */
-    public ?string $first_six_digits;
+    public $first_six_digits;
 
     /** Card expiration year. */
-    public ?int $expiration_year;
+    public $expiration_year;
 
     /** Card expiration month. */
-    public ?int $expiration_month;
+    public $expiration_month;
 
     /** Creation date of card. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Last update of data from the card. */
-    public ?string $date_last_updated;
+    public $date_last_updated;
 
     /** Card's owner data. */
-    public array|object|null $cardholder;
+    public $cardholder;
 
     /** Card ID. */
-    public ?int $card_id;
+    public $card_id;
 
     /** Current status of card. E.g. active. */
-    public ?string $status;
+    public $status;
 
     /** Date token expires. */
-    public ?string $date_due;
+    public $date_due;
 
     /** Flag indicating if Luhn validation is used. */
-    public ?bool $luhn_validation;
+    public $luhn_validation;
 
     /** Flag indicating if this is a production card token. */
-    public ?bool $live_mode;
+    public $live_mode;
 
     /** Require esc. */
-    public ?bool $require_esc;
+    public $require_esc;
 
     /** Security code of the card. */
-    public ?int $card_number_length;
+    public $card_number_length;
 
     /** Security code of the card. */
-    public ?int $security_code_length;
+    public $security_code_length;
 
 
     private $map = [

@@ -14,19 +14,19 @@ use PHPUnit\Framework\TestCase;
  */
 final class PreferenceClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client = new PreferenceClient();
         $preference = $client->create($this->createRequest());
         $this->assertNotNull($preference->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreferenceClient();
@@ -36,7 +36,7 @@ final class PreferenceClientITTest extends TestCase
         $client->create($request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new PreferenceClient();
         $created_preference = $client->create($this->createRequest());
@@ -45,7 +45,7 @@ final class PreferenceClientITTest extends TestCase
         $this->assertNotNull($preference->init_point);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreferenceClient();
@@ -55,15 +55,15 @@ final class PreferenceClientITTest extends TestCase
         $client->get($created_preference->id, $request_options);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $client = new PreferenceClient();
         $created_preference = $client->create($this->createRequest());
         $preference = $client->update($created_preference->id, $this->updateRequest());
-        $this->assertSame("https://www.test.com", $preference->notification_url);
+        $this->assertEquals("https://www.test.com", $preference->notification_url);
     }
 
-    public function testUpdateWithRequestOptionsFailure(): void
+    public function testUpdateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreferenceClient();
@@ -73,7 +73,7 @@ final class PreferenceClientITTest extends TestCase
         $client->update($created_preference->id, $this->updateRequest(), $request_options);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $client = new PreferenceClient();
 
@@ -85,14 +85,14 @@ final class PreferenceClientITTest extends TestCase
         sleep(3);
         $search_request = new MPSearchRequest(1, 0, ["external_reference" => $external_reference]);
         $search_result = $client->search($search_request);
-        $this->assertSame(1, $search_result->next_offset);
-        $this->assertSame(1, $search_result->total);
-        $this->assertSame(1, count($search_result->elements));
+        $this->assertEquals(1, $search_result->next_offset);
+        $this->assertEquals(1, $search_result->total);
+        $this->assertEquals(1, count($search_result->elements));
         $this->assertNotNull($search_result->elements[0]->id);
-        $this->assertSame($created_preference->external_reference, $search_result->elements[0]->external_reference);
+        $this->assertEquals($created_preference->external_reference, $search_result->elements[0]->external_reference);
     }
 
-    public function testSearchWithRequestOptionsFailure(): void
+    public function testSearchWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreferenceClient();

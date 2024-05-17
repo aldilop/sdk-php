@@ -11,16 +11,16 @@ class PointOfInteraction
     use Mapper;
 
     /** Type. */
-    public ?string $type;
+    public $type;
 
     /** Sub type. */
-    public ?string $sub_type;
+    public $sub_type;
 
     /** Application data. */
-    public array|object|null $application_data;
+    public $application_data;
 
     /** Transaction data. */
-    public array|object|null $transaction_data;
+    public $transaction_data;
 
     private $map = [
         "application_data" => "MercadoPago\Resources\Payment\ApplicationData",

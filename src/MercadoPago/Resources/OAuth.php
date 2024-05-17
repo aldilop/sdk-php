@@ -8,26 +8,26 @@ use MercadoPago\Net\MPResource;
 class OAuth extends MPResource
 {
     /** Access token. */
-    public ?string $access_token;
+    public $access_token;
 
     /** Token type. */
-    public ?string $token_type;
+    public $token_type;
 
     /** Expires in. */
-    public ?int $expires_in;
+    public $expires_in;
 
     /** Scope. */
-    public ?string $scope;
+    public $scope;
 
     /** User ID. */
-    public ?int $user_id;
+    public $user_id;
 
     /** Refresh token. */
-    public ?string $refresh_token;
+    public $refresh_token;
 
     /** Public key. */
-    public ?string $public_key;
+    public $public_key;
 
     /** Live mode. */
-    public ?bool $live_mode;
+    public $live_mode;
 }

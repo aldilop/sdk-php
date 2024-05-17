@@ -15,14 +15,14 @@ use MercadoPago\Serialization\Serializer;
 /** Client responsible for performing customer actions. */
 final class CustomerClient extends MercadoPagoClient
 {
-    private const URL = "/v1/customers";
+    const URL = "/v1/customers";
 
-    private const URL_WITH_ID = "/v1/customers/%s";
+    const URL_WITH_ID = "/v1/customers/%s";
 
-    private const URL_SEARCH = "/v1/customers/search";
+    const URL_SEARCH = "/v1/customers/search";
 
     /** Default constructor. Uses the default http client used by the SDK or custom http client provided. */
-    public function __construct(?MPHttpClient $MPHttpClient = null)
+    public function __construct(MPHttpClient $MPHttpClient = null)
     {
         parent::__construct($MPHttpClient ?: MercadoPagoConfig::getHttpClient());
     }
@@ -35,7 +35,7 @@ final class CustomerClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function create(array $request, ?RequestOptions $request_options = null): Customer
+    public function create(array $request, RequestOptions $request_options = null): Customer
     {
         $response = parent::send(self::URL, HttpMethod::POST, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(Customer::class, $response->getContent());
@@ -51,7 +51,7 @@ final class CustomerClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function createByEmail(string $email, ?RequestOptions $request_options = null): Customer
+    public function createByEmail(string $email, RequestOptions $request_options = null): Customer
     {
         $request = new CustomerCreateRequest();
         $request->email = $email;
@@ -69,7 +69,7 @@ final class CustomerClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function get(string $id, ?RequestOptions $request_options = null): Customer
+    public function get(string $id, RequestOptions $request_options = null): Customer
     {
         $response = parent::send(sprintf(self::URL_WITH_ID, $id), HttpMethod::GET, null, null, $request_options);
         $result = Serializer::deserializeFromJson(Customer::class, $response->getContent());
@@ -86,7 +86,7 @@ final class CustomerClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function update(string $id, array $request, ?RequestOptions $request_options = null): Customer
+    public function update(string $id, array $request, RequestOptions $request_options = null): Customer
     {
         $response = parent::send(sprintf(self::URL_WITH_ID, $id), HttpMethod::PUT, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(Customer::class, $response->getContent());
@@ -102,7 +102,7 @@ final class CustomerClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function search(?MPSearchRequest $request  = null, ?RequestOptions $request_options = null): CustomerSearch
+    public function search(MPSearchRequest $request  = null, RequestOptions $request_options = null): CustomerSearch
     {
         $query_params = isset($request) ? $request->getParameters() : null;
         $response = parent::send(self::URL_SEARCH, HttpMethod::GET, null, $query_params, $request_options);

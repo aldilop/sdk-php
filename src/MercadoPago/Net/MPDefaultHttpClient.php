@@ -9,15 +9,15 @@ use MercadoPago\MercadoPagoConfig;
 /** Mercado Pago default Http Client class. */
 class MPDefaultHttpClient implements MPHttpClient
 {
-    private const ONE_MILLISECOND = 1000;
+    const ONE_MILLISECOND = 1000;
 
-    private HttpRequest $httpRequest;
+    private $httpRequest;
 
     /**
      * Default constructor.
      * @param \MercadoPago\Net\HttpRequest|null $httpRequest http request to be used.
      */
-    public function __construct(?HttpRequest $httpRequest = null)
+    public function __construct(HttpRequest $httpRequest = null)
     {
         $this->httpRequest = $httpRequest ?? new CurlRequest();
     }
@@ -78,7 +78,7 @@ class MPDefaultHttpClient implements MPHttpClient
         return $mp_response;
     }
 
-    private function doExponentialBackoff(int $retry_count): void
+    private function doExponentialBackoff(int $retry_count)
     {
         $exponential_backoff_time = pow(2, $retry_count);
         $retry_delay_microseconds = $exponential_backoff_time * self::ONE_MILLISECOND * MercadoPagoConfig::getRetryDelay();

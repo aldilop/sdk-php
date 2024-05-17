@@ -6,25 +6,25 @@ namespace MercadoPago\Resources\PreApproval;
 class Summarized
 {
     /** The number of quotas (or installments). */
-    public ?int $quotas;
+    public $quotas;
 
     /** The quantity that has been charged. */
-    public ?int $charged_quantity;
+    public $charged_quantity;
 
     /** The quantity that is pending charge. */
-    public ?int $pending_charge_quantity;
+    public $pending_charge_quantity;
 
     /** The amount that has been charged. */
-    public ?float $charged_amount;
+    public $charged_amount;
 
     /** The amount that is pending charge. */
-    public ?float $pending_charge_amount;
+    public $pending_charge_amount;
 
     /** The date of the last charge. */
-    public ?string $last_charged_date;
+    public $last_charged_date;
 
     /** The amount of the last charge. */
-    public ?float $last_charged_amount;
+    public $last_charged_amount;
 
     /** The semaphore status. */
     public $semaphore;

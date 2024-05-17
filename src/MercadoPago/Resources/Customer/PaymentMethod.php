@@ -6,17 +6,17 @@ namespace MercadoPago\Resources\Customer;
 class PaymentMethod
 {
     /** Id of the payment method. */
-    public ?string $id;
+    public $id;
 
     /** Name of payment method. */
-    public ?string $name;
+    public $name;
 
     /** Type of payment method. */
-    public ?string $payment_type_id;
+    public $payment_type_id;
 
     /** Thumbnail of payment method. */
-    public ?string $thumbnail;
+    public $thumbnail;
 
     /** Thumbnail of payment method from a secure source. */
-    public ?string $secure_thumbnail;
+    public $secure_thumbnail;
 }

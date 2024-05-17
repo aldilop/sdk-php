@@ -13,25 +13,25 @@ use PHPUnit\Framework\TestCase;
  */
 final class IdentificationTypeClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testListSuccess(): void
+    public function testListSuccess()
     {
         $client = new IdentificationTypeClient();
         $identification_type = $client->list();
         $this->assertNotNull($identification_type->data);
-        $this->assertSame(200, $identification_type->getResponse()->getStatusCode());
+        $this->assertEquals(200, $identification_type->getResponse()->getStatusCode());
         $this->assertCount(2, $identification_type->getResponse()->getContent());
         $this->assertCount(2, $identification_type->data);
         $this->assertNotNull($identification_type->data[0]->id);
-        $this->assertSame("CPF", $identification_type->data[0]->id);
-        $this->assertSame("CNPJ", $identification_type->data[1]->id);
+        $this->assertEquals("CPF", $identification_type->data[0]->id);
+        $this->assertEquals("CNPJ", $identification_type->data[1]->id);
     }
 
-    public function testListWithRequestOptionsFailure(): void
+    public function testListWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new IdentificationTypeClient();

@@ -6,14 +6,14 @@ namespace MercadoPago\Resources\User;
 class Address
 {
     /** The user's address. */
-    public ?string $address;
+    public $address;
 
     /** The city where the user is located. */
-    public ?string $city;
+    public $city;
 
     /** The state code where the user is located (e.g., "BR-SP" for São Paulo, Brazil). */
-    public ?string $state;
+    public $state;
 
     /** The ZIP code of the user's location. */
-    public ?string $zip_code;
+    public $zip_code;
 }

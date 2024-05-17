@@ -11,49 +11,49 @@ class CustomerCardListResult
     use Mapper;
 
     /** Id of the card. */
-    public ?string $id;
+    public $id;
 
     /** Id of the customer. */
-    public ?string $customer_id;
+    public $customer_id;
 
     /** Month the card expires. */
-    public ?int $expiration_month;
+    public $expiration_month;
 
     /** Year the card expires. */
-    public ?int $expiration_year;
+    public $expiration_year;
 
     /** First six digits of the card. */
-    public ?string $first_six_digits;
+    public $first_six_digits;
 
     /** Last four digits of the card. */
-    public ?string $last_four_digits;
+    public $last_four_digits;
 
     /** Data related to the chosen payment method. */
-    public array|object|null $payment_method;
+    public $payment_method;
 
     /** Security code of the card. */
-    public array|object|null $security_code;
+    public $security_code;
 
     /** Card issuer. */
-    public array|object|null $issuer;
+    public $issuer;
 
     /** Data related to the holder of the card, usually the customer. */
-    public array|object|null  $cardholder;
+    public $cardholder;
 
     /** Creation date of the record. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Date the record was last updated. */
-    public ?string $date_last_updated;
+    public $date_last_updated;
 
     /** Id of the user. */
-    public ?string $user_id;
+    public $user_id;
 
     /** Flag indicating if this is a record from production or test environment. */
-    public ?bool $live_mode;
+    public $live_mode;
 
     /** Card number is. */
-    public ?string $card_number_id;
+    public $card_number_id;
 
     private $map = [
         "payment_method" => "MercadoPago\Resources\Customer\PaymentMethod",

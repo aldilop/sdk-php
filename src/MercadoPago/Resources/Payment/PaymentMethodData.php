@@ -11,7 +11,7 @@ class PaymentMethodData
     use Mapper;
 
     /** Payment rules. */
-    public array|object|null $rules;
+    public $rules;
 
     private $map = [
         "rules" => "MercadoPago\Resources\Payment\PaymentMethodRules",

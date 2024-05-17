@@ -12,49 +12,49 @@ class PaymentRefund extends MPResource
     use Mapper;
 
     /** Refund ID. */
-    public ?int $id;
+    public $id;
 
     /** ID of the refunded payment. */
-    public ?int $payment_id;
+    public $payment_id;
 
     /** Amount refunded. */
-    public ?float $amount;
+    public $amount;
 
     /** Adjustment amount. */
-    public ?float $adjustment_amount;
+    public $adjustment_amount;
 
     /** Refund status. */
-    public ?string $status;
+    public $status;
 
     /** Refund mode. */
-    public ?string $refund_mode;
+    public $refund_mode;
 
     /** Date of creation. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Refund reason. */
-    public ?string $reason;
+    public $reason;
 
     /** Unique sequence number. */
-    public ?string $unique_sequence_number;
+    public $unique_sequence_number;
 
     /** Source of the refund. */
-    public array|object|null $source;
+    public $source;
 
     /** Amount refunded to the payer. */
-    public ?int $amount_refunded_to_payer;
+    public $amount_refunded_to_payer;
 
     /** Partition details. */
-    public array|object|null $partition_details;
+    public $partition_details;
 
     /** Labels. */
-    public array|object|null $labels;
+    public $labels;
 
     /** Additional data. */
-    public array|object|null $additional_data;
+    public $additional_data;
 
     /** Expiration date. */
-    public ?string $expiration_date;
+    public $expiration_date;
 
     public $map = [
         "source" => "MercadoPago\Resources\Common\Source"

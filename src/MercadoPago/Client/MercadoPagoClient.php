@@ -12,12 +12,15 @@ use MercadoPago\Net\MPResponse;
 /** Mercado Pago client class. */
 class MercadoPagoClient
 {
+    protected $http_client;
+
     /**
      * MercadoPagoClient constructor.
      * @param \MercadoPago\Net\MPHttpClient $http_client http client to be used.
      */
-    public function __construct(protected MPHttpClient $http_client)
+    public function __construct(MPHttpClient $http_client)
     {
+        $this->http_client = $http_client;
     }
 
     /**
@@ -29,7 +32,7 @@ class MercadoPagoClient
      * @param \MercadoPago\Client\Common\RequestOptions request options to be sent.
      * @return \MercadoPago\Net\MPResponse response from the request.
      */
-    protected function send(string $uri, string $method, ?string $payload = null, ?array $query_params = [], ?RequestOptions $request_options = null): MPResponse
+    protected function send(string $uri, string $method, string $payload = null, $query_params = [], RequestOptions $request_options = null): MPResponse
     {
         return $this->http_client->send($this->buildRequest($uri, $method, $payload, $query_params, $request_options));
     }
@@ -37,15 +40,15 @@ class MercadoPagoClient
     private function buildRequest(
         string $path,
         string $method,
-        ?string $payload = null,
-        ?array $query_params = [],
-        ?RequestOptions $request_options = null
+        string $payload = null,
+        $query_params = [],
+        RequestOptions $request_options = null
     ): MPRequest {
         $path = $this->formatUrlWithQueryParams($path, $query_params);
         return new MPRequest($path, $method, $payload, $this->addHeaders($method, $request_options), $this->addConnectionTimeout($request_options));
     }
 
-    private function formatUrlWithQueryParams(string $url, ?array $query_params): string
+    private function formatUrlWithQueryParams(string $url, array $query_params = null): string
     {
         if (!empty($query_params)) {
             $query_string = http_build_query($query_params);
@@ -59,7 +62,7 @@ class MercadoPagoClient
         return $url;
     }
 
-    private function addHeaders(string $method, ?RequestOptions $request_options = null): array
+    private function addHeaders(string $method, RequestOptions $request_options = null): array
     {
         $headers = array();
         $headers = $this->addCustomHeaders($headers, $request_options);
@@ -68,7 +71,7 @@ class MercadoPagoClient
         return $headers;
     }
 
-    private function addCustomHeaders(array $headers, ?RequestOptions $request_options = null): array
+    private function addCustomHeaders(array $headers, RequestOptions $request_options = null): array
     {
         if (!is_null($request_options) && !is_null($request_options->getCustomHeaders())) {
             return array_merge($headers, $request_options->getCustomHeaders());
@@ -76,7 +79,7 @@ class MercadoPagoClient
         return $headers;
     }
 
-    private function addDefaultHeaders(string $method, array $headers, ?RequestOptions $request_options = null): array
+    private function addDefaultHeaders(string $method, array $headers, RequestOptions $request_options = null): array
     {
         $default_headers = array(
             'Accept: application/json',
@@ -122,9 +125,15 @@ class MercadoPagoClient
         return false;
     }
 
-    private function getAccessToken(?RequestOptions $request_options = null): string
+    private function getAccessToken(RequestOptions $request_options = null): string
     {
-        return $request_options?->getAccessToken() ?? MercadoPagoConfig::getAccessToken();
+        if (!is_null($request_options)) {
+            $accessToken = $request_options->getAccessToken();
+            if (!is_null($accessToken)) {
+                return $accessToken;
+            }
+        }
+        return MercadoPagoConfig::getAccessToken();
     }
 
     private function shouldAddIdempotencyKey(string $method): bool
@@ -132,7 +141,7 @@ class MercadoPagoClient
         return $method === HttpMethod::POST || $method === HttpMethod::PUT || $method === HttpMethod::PATCH;
     }
 
-    private function getIdempotencyKey(?RequestOptions $request_options = null): string
+    private function getIdempotencyKey(RequestOptions $request_options = null): string
     {
         $key = "x-idempotency-key";
         if (!is_null($request_options) && !is_null($request_options->getCustomHeaders())) {
@@ -144,10 +153,11 @@ class MercadoPagoClient
         return $this->generateUUID();
     }
 
-    private function addConnectionTimeout(?RequestOptions $request_options = null): int
+    private function addConnectionTimeout(RequestOptions $request_options = null): int
     {
-        return ($request_options?->getConnectionTimeout() ?? 0) > 0
-            ? $request_options->getConnectionTimeout()
+        $connectionTimeout = is_null($request_options) ? 0 : $request_options->getConnectionTimeout() ?? 0;
+        return $connectionTimeout > 0
+            ? $connectionTimeout
             : MercadoPagoConfig::getConnectionTimeout();
     }
 

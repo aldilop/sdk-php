@@ -6,28 +6,28 @@ namespace MercadoPago\Resources\PreApproval;
 class AutoRecurring
 {
     /** Currency ID. */
-    public ?string $currency_id;
+    public $currency_id;
 
     /** Recurring amount. */
-    public ?float $transaction_amount;
+    public $transaction_amount;
 
     /** Recurring frequency. */
-    public ?int $frequency;
+    public $frequency;
 
     /** Recurring frequency type (days or months). */
-    public ?string $frequency_type;
+    public $frequency_type;
 
     /** Recurring start date. */
-    public ?string $start_date;
+    public $start_date;
 
     /** Recurring end date. */
-    public ?string $end_date;
+    public $end_date;
 
     /** Indicates whether billing is proportional. */
-    public ?bool $billing_day_proportional;
+    public $billing_day_proportional;
 
     /** Indicates whether there is a specific billing day. */
-    public ?bool $has_billing_day;
+    public $has_billing_day;
 
     /** Free trial. */
     public $free_trial;

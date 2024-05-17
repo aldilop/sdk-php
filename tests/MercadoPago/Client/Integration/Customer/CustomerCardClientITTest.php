@@ -15,12 +15,12 @@ use PHPUnit\Framework\TestCase;
  */
 final class CustomerCardClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client_customer = new CustomerClient();
         $id = rand(100000, 200000);
@@ -38,7 +38,7 @@ final class CustomerCardClientITTest extends TestCase
         $this->assertNotNull($customer_card->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerCardClient();
@@ -48,7 +48,7 @@ final class CustomerCardClientITTest extends TestCase
         $client->create("1469979538-52qKdADBYeloaX", $request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client_customer = new CustomerClient();
         $id = rand(100000, 200000);
@@ -69,7 +69,7 @@ final class CustomerCardClientITTest extends TestCase
         $this->assertNotNull($get_customer_card->id);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerCardClient();
@@ -78,7 +78,7 @@ final class CustomerCardClientITTest extends TestCase
         $client->get("1469979538-52qKdADBYeloaX", "abcd1234", $request_options);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $client_customer = new CustomerClient();
         $id = rand(100000, 200000);
@@ -97,10 +97,10 @@ final class CustomerCardClientITTest extends TestCase
 
         $request_update = ["expiration_year" => 2026];
         $update_customer = $client->update($customer->id, $customer_card->id, $request_update);
-        $this->assertSame(2026, $update_customer->expiration_year);
+        $this->assertEquals(2026, $update_customer->expiration_year);
     }
 
-    public function testUpdateWithRequestOptionsFailure(): void
+    public function testUpdateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerCardClient();
@@ -110,7 +110,7 @@ final class CustomerCardClientITTest extends TestCase
         $client->update("1469979538-52qKdADBYeloaX", "1234abcd", $request_update, $request_options);
     }
 
-    public function testDeleteSuccess(): void
+    public function testDeleteSuccess()
     {
         $client_customer = new CustomerClient();
         $id = rand(100000, 200000);
@@ -131,7 +131,7 @@ final class CustomerCardClientITTest extends TestCase
         $this->assertNotNull($delete_customer->id);
     }
 
-    public function testDeleteWithRequestOptionsFailure(): void
+    public function testDeleteWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerCardClient();
@@ -140,7 +140,7 @@ final class CustomerCardClientITTest extends TestCase
         $client->delete("1469979538-52qKdADBYeloaX", "1234abcd", $request_options);
     }
 
-    public function testListSuccess(): void
+    public function testListSuccess()
     {
         $client_customer = new CustomerClient();
         $id = rand(100000, 200000);
@@ -159,13 +159,13 @@ final class CustomerCardClientITTest extends TestCase
 
         $get_customer_card = $client->list($customer->id);
         $this->assertNotNull($get_customer_card->data);
-        $this->assertSame(200, $get_customer_card->getResponse()->getStatusCode());
+        $this->assertEquals(200, $get_customer_card->getResponse()->getStatusCode());
         $this->assertCount(1, $get_customer_card->getResponse()->getContent());
         $this->assertCount(1, $get_customer_card->data);
         $this->assertNotNull($get_customer_card->data[0]->id);
     }
 
-    public function testListWithRequestOptionsFailure(): void
+    public function testListWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerCardClient();

@@ -8,17 +8,17 @@ use MercadoPago\Resources\Common\Address;
 class ReceiverAddress extends Address
 {
     /** Country. */
-    public ?string $country_name;
+    public $country_name;
 
     /** State. */
-    public ?string $state_name;
+    public $state_name;
 
     /** Floor. */
-    public ?string $floor;
+    public $floor;
 
     /** Apartment. */
-    public ?string $apartment;
+    public $apartment;
 
     /** City name. */
-    public ?string $city_name;
+    public $city_name;
 }

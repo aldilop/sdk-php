@@ -11,40 +11,40 @@ class PreApprovalPlanListResult
     use Mapper;
 
     /** Subscription ID. */
-    public ?string $id;
+    public $id;
 
     /** Return URL. */
-    public ?string $back_url;
+    public $back_url;
 
     /** Collector ID. */
-    public ?int $collector_id;
+    public $collector_id;
 
     /** Application ID. */
-    public ?int $application_id;
+    public $application_id;
 
     /** Reason for the subscription. */
-    public ?string $reason;
+    public $reason;
 
     /** Subscription status. */
-    public ?string $status;
+    public $status;
 
     /** Date of creation. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Date of last modification. */
-    public ?string $last_modified;
+    public $last_modified;
 
     /** Initial point. */
-    public ?string $init_point;
+    public $init_point;
 
     /** Auto-recurring subscription details. */
-    public ?object $auto_recurring;
+    public $auto_recurring;
 
     /** Allowed payment methods. */
-    public array|object|null $payment_methods_allowed;
+    public $payment_methods_allowed;
 
     /** Subscribed. */
-    public ?int $subscribed;
+    public $subscribed;
 
 
     public $map = [

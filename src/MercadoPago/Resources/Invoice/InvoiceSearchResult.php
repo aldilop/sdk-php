@@ -11,46 +11,46 @@ class InvoiceSearchResult
     use Mapper;
 
     /** The ID of the invoice. */
-    public ?int $id;
+    public $id;
 
     /** The type of invoice. */
-    public ?string $type;
+    public $type;
 
     /** The date and time when the invoice was created. */
-    public ?string $date_created;
+    public $date_created;
 
     /** The date and time when the invoice was last modified. */
-    public ?string $last_modified;
+    public $last_modified;
 
     /** The preapproval ID associated with the invoice. */
-    public ?string $preapproval_id;
+    public $preapproval_id;
 
     /** The reason for the invoice. */
-    public ?string $reason;
+    public $reason;
 
     /** The external reference for the invoice. */
-    public ?string $external_reference;
+    public $external_reference;
 
     /** The currency ID. */
-    public ?string $currency_id;
+    public $currency_id;
 
     /** The transaction amount. */
-    public ?float $transaction_amount;
+    public $transaction_amount;
 
     /** The debit date and time for the invoice. */
-    public ?string $debit_date;
+    public $debit_date;
 
     /** The retry attempt count. */
-    public ?int $retry_attempt;
+    public $retry_attempt;
 
     /** Status of the invoice. */
-    public ?string $status;
+    public $status;
 
     /** Summarized. */
-    public ?string $summarized;
+    public $summarized;
 
     /** Payment info. */
-    public array|object|null $payment;
+    public $payment;
 
     public $map = [
         "payment" => "MercadoPago\Resources\Invoice\Payment",

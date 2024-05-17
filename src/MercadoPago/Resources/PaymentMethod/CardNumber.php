@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\PaymentMethod;
 class CardNumber
 {
     /** Card number length. */
-    public ?int $length;
+    public $length;
 
     /** Card number validation. */
-    public ?string $validation;
+    public $validation;
 }

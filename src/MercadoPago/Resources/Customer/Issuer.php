@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\Customer;
 class Issuer
 {
     /** Id of the issuer. */
-    public ?int $id;
+    public $id;
 
     /** Name of the issuer. */
-    public ?string $name;
+    public $name;
 }

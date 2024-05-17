@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\User;
 class Ratings
 {
     /** The number of negative ratings. */
-    public ?int $negative;
+    public $negative;
 
     /** The number of neutral ratings. */
-    public ?int $neutral;
+    public $neutral;
 
     /** The number of positive ratings. */
-    public ?int $positive;
+    public $positive;
 }

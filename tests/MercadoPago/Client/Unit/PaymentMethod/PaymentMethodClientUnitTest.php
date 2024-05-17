@@ -12,7 +12,7 @@ use MercadoPago\Tests\Client\Unit\Base\BaseClient;
  */
 final class PaymentMethodClientUnitTest extends BaseClient
 {
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $file_path = '../../../../Resources/Mocks/Response/PaymentMethod/payment_method_get.json';
         $mock_http_request = $this->mockHttpRequest($file_path, 200);
@@ -23,7 +23,7 @@ final class PaymentMethodClientUnitTest extends BaseClient
         $client = new PaymentMethodClient();
         $payment_method_result = $client->list();
         $this->assertNotNull($payment_method_result->data);
-        $this->assertSame(200, $payment_method_result->getResponse()->getStatusCode());
+        $this->assertEquals(200, $payment_method_result->getResponse()->getStatusCode());
         $this->assertCount(2, $payment_method_result->getResponse()->getContent());
         $this->assertCount(2, $payment_method_result->data);
         $this->assertCount(1, $payment_method_result->data[0]->settings);

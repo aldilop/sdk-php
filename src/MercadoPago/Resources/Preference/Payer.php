@@ -11,28 +11,28 @@ class Payer
     use Mapper;
 
     /** Payer's name. */
-    public ?string $name;
+    public $name;
 
     /** Payer's surname. */
-    public ?string $surname;
+    public $surname;
 
     /** Payer's email. */
-    public ?string $email;
+    public $email;
 
     /** Payer's phone. */
-    public array|object|null $phone;
+    public $phone;
 
     /** Payer's identification. */
-    public array|object|null $identification;
+    public $identification;
 
     /** Payer's address. */
-    public array|object|null $address;
+    public $address;
 
     /** Date of creation of the payer user. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Date of the last purchase. */
-    public ?string $last_purchase;
+    public $last_purchase;
 
     private $map = [
         "identification" => "MercadoPago\Resources\Common\Identification",

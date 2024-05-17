@@ -7,8 +7,12 @@ namespace MercadoPago\Net;
  */
 class MPSearchRequest
 {
-    private const LIMIT_PARAM = "limit";
-    private const OFFSET_PARAM = "offset";
+    const LIMIT_PARAM = "limit";
+    const OFFSET_PARAM = "offset";
+
+    private $limit;
+    private $offset;
+    private $filters;
 
     /**
      * MPSearchRequest constructor.
@@ -17,17 +21,20 @@ class MPSearchRequest
      * @param array $filters filters of the search.
      */
     public function __construct(
-        private ?int $limit,
-        private ?int $offset,
-        private ?array $filters = []
+        int $limit = null,
+        int $offset = null,
+        $filters = []
     ) {
+        $this->limit = $limit;
+        $this->offset = $offset;
+        $this->filters = $filters;
     }
 
     /**
      * Get the limit of the search.
      * @return int limit of the search.
      */
-    public function getLimit(): ?int
+    public function getLimit()
     {
         return $this->limit;
     }
@@ -36,7 +43,7 @@ class MPSearchRequest
      * Get the offset of the search.
      * @return int offset of the search.
      */
-    public function getOffset(): ?int
+    public function getOffset()
     {
         return $this->offset;
     }

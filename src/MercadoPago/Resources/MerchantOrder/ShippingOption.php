@@ -5,28 +5,28 @@ namespace MercadoPago\Resources\MerchantOrder;
 class ShippingOption
 {
     /** Shipping option ID. */
-    public ?int $id;
+    public $id;
 
     /** Net cost absorbed by the receiver. */
-    public ?float $cost;
+    public $cost;
 
     /** Currency ID. */
-    public ?string $currency_id;
+    public $currency_id;
 
     /** Estimated delivery time information. */
-    public array|object|null $estimated_delivery;
+    public $estimated_delivery;
 
     /** Net cost of the shipping. */
-    public ?float $list_cost;
+    public $list_cost;
 
     /** Option name. */
-    public ?string $name;
+    public $name;
 
     /** Shipping method ID. */
-    public ?int $shipping_method_id;
+    public $shipping_method_id;
 
     /** Shipping time information. */
-    public array|object|null $speed;
+    public $speed;
 
     private $map = [
       "estimated_delivery" => "MercadoPago\Resources\MerchantOrder\ShippingEstimatedDelivery",

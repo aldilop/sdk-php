@@ -11,10 +11,10 @@ class Track
     use Mapper;
 
     /** Track type (google_ad or facebook_ad). */
-    public ?string $type;
+    public $type;
 
     /** Values according the track type. */
-    public array|object|null $values;
+    public $values;
 
 
     private $map = [

@@ -16,16 +16,16 @@ use PHPUnit\Framework\TestCase;
  */
 final class PointClientITTest extends TestCase
 {
-    private const DEVICE_ID = "GERTEC_MP123__12345678";
-    private const STORE_ID = "12345678";
-    private const POS_ID = "12345678";
+    const DEVICE_ID = "GERTEC_MP123__12345678";
+    const STORE_ID = "12345678";
+    const POS_ID = "12345678";
 
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreatePaymentIntentSuccess(): void
+    public function testCreatePaymentIntentSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -34,14 +34,16 @@ final class PointClientITTest extends TestCase
         try {
             $payment_intent = $client->createPaymentIntent(PointClientITTest::DEVICE_ID, $request, $request_options);
             $this->assertNotNull($payment_intent->id);
-        } catch (MPApiException | \Exception $e) {
+        } catch (MPApiException $e) {
+            $this->fail($e->getMessage());
+        } catch (\Exception $e) {
             $this->fail($e->getMessage());
         } finally {
             $client->cancelPaymentIntent(PointClientITTest::DEVICE_ID, $payment_intent->id, $request_options);
         }
     }
 
-    public function testCreatePaymentIntentWithRequestOptionsFailure(): void
+    public function testCreatePaymentIntentWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();
@@ -51,7 +53,7 @@ final class PointClientITTest extends TestCase
         $client->createPaymentIntent(PointClientITTest::DEVICE_ID, $request, $request_options);
     }
 
-    public function testSearchPaymentIntentSuccess(): void
+    public function testSearchPaymentIntentSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -61,14 +63,16 @@ final class PointClientITTest extends TestCase
             $payment_intent = $client->createPaymentIntent(PointClientITTest::DEVICE_ID, $request, $request_options);
             $payment_intent_search = $client->searchPaymentIntent($payment_intent->id, $request_options);
             $this->assertNotNull($payment_intent_search->id);
-        } catch (MPApiException | \Exception $e) {
+        } catch (MPApiException $e) {
+            $this->fail($e->getMessage());
+        } catch (\Exception $e) {
             $this->fail($e->getMessage());
         } finally {
             $client->cancelPaymentIntent(PointClientITTest::DEVICE_ID, $payment_intent->id, $request_options);
         }
     }
 
-    public function testSearchPaymentIntentWithRequestOptionsFailure(): void
+    public function testSearchPaymentIntentWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();
@@ -77,7 +81,7 @@ final class PointClientITTest extends TestCase
         $client->searchPaymentIntent("123", $request_options);
     }
 
-    public function testCancelPaymentIntentSuccess(): void
+    public function testCancelPaymentIntentSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -88,12 +92,14 @@ final class PointClientITTest extends TestCase
             sleep(3);
             $payment_intent_cancel = $client->cancelPaymentIntent(PointClientITTest::DEVICE_ID, $payment_intent->id, $request_options);
             $this->assertNotNull($payment_intent_cancel->id);
-        } catch (MPApiException | \Exception $e) {
+        } catch (MPApiException $e) {
+            $this->fail($e->getMessage());
+        } catch (\Exception $e) {
             $this->fail($e->getMessage());
         }
     }
 
-    public function testCancelPaymentIntentWithRequestOptionsFailure(): void
+    public function testCancelPaymentIntentWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();
@@ -102,7 +108,7 @@ final class PointClientITTest extends TestCase
         $client->cancelPaymentIntent(PointClientITTest::DEVICE_ID, "123", $request_options);
     }
 
-    public function testGetPaymentIntentListSuccess(): void
+    public function testGetPaymentIntentListSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -114,14 +120,16 @@ final class PointClientITTest extends TestCase
             sleep(3);
             $payment_intent_list = $client->getPaymentIntentList($list_request, $request_options);
             $this->assertNotNull($payment_intent_list->events[0]->payment_intent_id);
-        } catch (MPApiException | \Exception $e) {
+        } catch (MPApiException $e) {
+            $this->fail($e->getMessage());
+        } catch (\Exception $e) {
             $this->fail($e->getMessage());
         } finally {
             $client->cancelPaymentIntent(PointClientITTest::DEVICE_ID, $payment_intent->id, $request_options);
         }
     }
 
-    public function testListPaymentIntentWithRequestOptionsFailure(): void
+    public function testListPaymentIntentWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();
@@ -131,7 +139,7 @@ final class PointClientITTest extends TestCase
         $client->getPaymentIntentList($list_request, $request_options);
     }
 
-    public function testGetPaymentIntentStatusSuccess(): void
+    public function testGetPaymentIntentStatusSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -143,14 +151,16 @@ final class PointClientITTest extends TestCase
             $payment_intent_status = $client->getPaymentIntentStatus($payment_intent->id, $request_options);
             $this->assertNotNull($payment_intent_status->status);
             $this->assertNotNull($payment_intent_status->created_on);
-        } catch (MPApiException | \Exception $e) {
+        } catch (MPApiException $e) {
+            $this->fail($e->getMessage());
+        } catch (\Exception $e) {
             $this->fail($e->getMessage());
         } finally {
             $client->cancelPaymentIntent(PointClientITTest::DEVICE_ID, $payment_intent->id, $request_options);
         }
     }
 
-    public function testGetPaymentIntentStatusWithRequestOptionsFailure(): void
+    public function testGetPaymentIntentStatusWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();
@@ -159,7 +169,7 @@ final class PointClientITTest extends TestCase
         $client->getPaymentIntentStatus("123", $request_options);
     }
 
-    public function testGetDevicesSuccess(): void
+    public function testGetDevicesSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -168,7 +178,7 @@ final class PointClientITTest extends TestCase
         $this->assertNotNull($devices->devices[0]->id);
     }
 
-    public function testGetDevicesWithRequestOptionsFailure(): void
+    public function testGetDevicesWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();
@@ -178,7 +188,7 @@ final class PointClientITTest extends TestCase
         $client->getDevices($request, $request_options);
     }
 
-    public function testChangeDeviceOperationgModeSuccess(): void
+    public function testChangeDeviceOperationgModeSuccess()
     {
         $client = new PointClient();
         $request = $this->createRequest();
@@ -187,10 +197,10 @@ final class PointClientITTest extends TestCase
         $device_id = $devices->devices[0]->id;
         $request = $this->createOperatingModeRequest();
         $device_updated = $client->changeDeviceOperatingMode($device_id, $request);
-        $this->assertSame("PDV", $device_updated->operating_mode);
+        $this->assertEquals("PDV", $device_updated->operating_mode);
     }
 
-    public function testChangeDeviceOperationgModeWithRequestOptionsFailure(): void
+    public function testChangeDeviceOperationgModeWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PointClient();

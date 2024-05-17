@@ -6,17 +6,17 @@ namespace MercadoPago\Resources\IdentificationType;
 class IdentificationTypeListResult
 {
     /** Identification type ID. */
-    public ?string $id;
+    public $id;
 
     /** Identification type name. */
-    public ?string $name;
+    public $name;
 
     /** Identification type type. */
-    public ?string $type;
+    public $type;
 
     /** Identification type min length. */
-    public ?int $min_length;
+    public $min_length;
 
     /** Identification type max length. */
-    public ?int $max_length;
+    public $max_length;
 }

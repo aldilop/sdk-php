@@ -6,14 +6,14 @@ namespace MercadoPago\Resources\Payment;
 class BankInfoCollector
 {
     /** Account ID. */
-    public ?string $account_id;
+    public $account_id;
 
     /** Account long name. */
-    public ?string $long_name;
+    public $long_name;
 
     /** Account holder name. */
-    public ?string $account_holder_name;
+    public $account_holder_name;
 
     /** Transfer account ID. */
-    public ?string $transfer_account_id;
+    public $transfer_account_id;
 }

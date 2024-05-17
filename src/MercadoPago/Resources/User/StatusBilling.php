@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\User;
 class StatusBilling
 {
     /** Indicates whether billing is allowed (true/false). */
-    public ?bool $allow;
+    public $allow;
 
     /** Billing status codes. */
-    public ?array $codes;
+    public $codes;
 }

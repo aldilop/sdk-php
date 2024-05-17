@@ -11,13 +11,13 @@ class Settings
     use Mapper;
 
     /** Setting bin. */
-    public array|object|null $bin;
+    public $bin;
 
     /** Setting card number. */
-    public array|object|null $card_number;
+    public $card_number;
 
     /** Setting security code. */
-    public array|object|null $security_code;
+    public $security_code;
 
     private $map = [
         "bin" => "MercadoPago\Resources\PaymentMethod\Bin",

@@ -11,46 +11,46 @@ class TransactionDetails
     use Mapper;
 
     /** External financial institution identifier. */
-    public ?string $financial_institution;
+    public $financial_institution;
 
     /** Amount received by the seller. */
-    public ?float $net_received_amount;
+    public $net_received_amount;
 
     /** Total amount paid by the buyer (includes fees). */
-    public ?float $total_paid_amount;
+    public $total_paid_amount;
 
     /** Total installments amount. */
-    public ?float $installment_amount;
+    public $installment_amount;
 
     /** Amount overpaid (only for tickets). */
-    public ?float $overpaid_amount;
+    public $overpaid_amount;
 
     /** Identifies the resource in the payment processor. */
-    public ?string $external_resource_url;
+    public $external_resource_url;
 
     /**
      * For credit card payments is the USN. For offline payment methods, is the reference to give to
      * the cashier or to input into the ATM.
      */
-    public ?string $payment_method_reference_id;
+    public $payment_method_reference_id;
 
     /** Acquirer Reference. */
-    public ?string $acquirer_reference;
+    public $acquirer_reference;
 
     /** Payable deferral period. */
-    public ?string $payable_deferral_period;
+    public $payable_deferral_period;
 
     /** Bank transfer ID. */
-    public ?string $bank_transfer_id;
+    public $bank_transfer_id;
 
     /** Transaction ID. */
-    public ?string $transaction_id;
+    public $transaction_id;
 
     /** Barcode info. */
-    public array|object|null $barcode;
+    public $barcode;
 
     /** Verification code info. */
-    public ?string $verification_code;
+    public $verification_code;
 
     private $map = [
         "barcode" => "MercadoPago\Resources\Payment\Barcode",

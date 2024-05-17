@@ -11,64 +11,64 @@ class CustomerSearchResult
     use Mapper;
 
     /** Id of the customer. */
-    public ?string $id;
+    public $id;
 
     /** Email of the customer. */
-    public ?string $email;
+    public $email;
 
     /** First name of the customer. */
-    public ?string $first_name;
+    public $first_name;
 
     /** Last name of the customer. */
-    public ?string $last_name;
+    public $last_name;
 
     /** Date registered. */
-    public ?string $date_registered;
+    public $date_registered;
 
     /** Description. */
-    public ?string $description;
+    public $description;
 
     /** Date created. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Date Last_updated. */
-    public ?string $date_last_updated;
+    public $date_last_updated;
 
     /** Default card. */
-    public ?string $default_card;
+    public $default_card;
 
     /** Default address. */
-    public ?string $default_address;
+    public $default_address;
 
     /** Flag indicating if this is a record from production or test environment. */
-    public ?bool $live_mode;
+    public $live_mode;
 
     /** Id of the user. */
-    public ?int $user_id;
+    public $user_id;
 
     /** Id of the merchant. */
-    public ?int $merchant_id;
+    public $merchant_id;
 
     /** Id of the client. */
-    public ?int $client_id;
+    public $client_id;
 
     /** Status of the customer. */
-    public ?string $status;
+    public $status;
 
     /** List cards of the customer. */
-    public array $cards;
+    public $cards;
 
     /** List addresses of the customer. */
-    public array $addresses;
+    public $addresses;
 
     /** Phone of the customer. */
-    public array|object|null $phone;
+    public $phone;
 
     /** Identification of the customer. */
-    public array|object|null $identification;
+    public $identification;
 
     /** Address of the customer. */
-    public array|object|null $address;
+    public $address;
 
     private $map = [
         "phone" => "MercadoPago\Resources\Common\Phone",

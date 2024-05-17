@@ -22,7 +22,7 @@ class CurlRequest implements HttpRequest
      * @param array $value options to be set.
      * @return void
      */
-    public function setOptionArray(array $value): void
+    public function setOptionArray(array $value)
     {
         curl_setopt_array($this->handle, $value);
     }
@@ -31,7 +31,7 @@ class CurlRequest implements HttpRequest
      * Execute the request.
      * @return bool|string response from the request.
      */
-    public function execute(): bool|string
+    public function execute()
     {
         return curl_exec($this->handle);
     }
@@ -41,7 +41,7 @@ class CurlRequest implements HttpRequest
      * @param mixed $name name of the information to be retrieved.
      * @return mixed information retrieved.
      */
-    public function getInfo(mixed $name): mixed
+    public function getInfo($name)
     {
         return curl_getinfo($this->handle, $name);
     }
@@ -50,7 +50,7 @@ class CurlRequest implements HttpRequest
      * Close the request.
      * @return void
      */
-    public function close(): void
+    public function close()
     {
         curl_close($this->handle);
     }

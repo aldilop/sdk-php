@@ -13,19 +13,19 @@ use PHPUnit\Framework\TestCase;
  */
 final class CardTokenClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client = new CardTokenClient();
         $card_token = $client->create($this->createRequest());
         $this->assertNotNull($card_token->id);
     }
 
-    public function testCreateWithInvalidAccessTokenFailure(): void
+    public function testCreateWithInvalidAccessTokenFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CardTokenClient();
