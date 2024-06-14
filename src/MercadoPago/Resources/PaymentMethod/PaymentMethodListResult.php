@@ -11,43 +11,43 @@ class PaymentMethodListResult
     use Mapper;
 
     /** Payment method ID. */
-    public ?string $id;
+    public $id;
 
     /** Payment method name. */
-    public ?string $name;
+    public $name;
 
     /** Payment method payment type ID. */
-    public ?string $payment_type_id;
+    public $payment_type_id;
 
     /** Payment method status. */
-    public ?string $status;
+    public $status;
 
     /** Payment method secure thumbnail. */
-    public ?string $secure_thumbnail;
+    public $secure_thumbnail;
 
     /** Payment method thumbnail. */
-    public ?string $thumbnail;
+    public $thumbnail;
 
     /** Payment method deferred capture. */
-    public ?string $deferred_capture;
+    public $deferred_capture;
 
     /** Payment method settings. */
-    public array|object|null $settings;
+    public $settings;
 
     /** Payment method min allowed amount. */
-    public ?float $min_allowed_amount;
+    public $min_allowed_amount;
 
     /** Payment method max allowed amount. */
-    public ?float $max_allowed_amount;
+    public $max_allowed_amount;
 
     /** Payment method accreditation time. */
-    public ?int $accreditation_time;
+    public $accreditation_time;
 
     /** Payment method financial institutions. */
-    public array|object|null $financial_institutions;
+    public $financial_institutions;
 
     /** Payment method processing modes. */
-    public ?string $processing_modes;
+    public $processing_modes;
 
     /** Payment method additional info needed. */
     public $additional_info_needed;

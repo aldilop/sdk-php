@@ -12,10 +12,10 @@ class PointDevices extends MPResource
     use Mapper;
 
     /** Search paging. */
-    public array|object|null $paging;
+    public $paging;
 
     /** Devices. */
-    public array|object|null $devices;
+    public $devices;
 
     private $map = [
         "paging" => "MercadoPago\Resources\Common\Paging",

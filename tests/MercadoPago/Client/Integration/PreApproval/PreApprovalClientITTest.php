@@ -14,19 +14,19 @@ use PHPUnit\Framework\TestCase;
  */
 final class PreApprovalClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client = new PreApprovalClient();
         $preapproval = $client->create($this->createRequest());
         $this->assertNotNull($preapproval->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalClient();
@@ -36,7 +36,7 @@ final class PreApprovalClientITTest extends TestCase
         $client->create($request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new PreApprovalClient();
         $created_preapproval = $client->create($this->createRequest());
@@ -45,7 +45,7 @@ final class PreApprovalClientITTest extends TestCase
         $this->assertNotNull($preapproval->back_url);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalClient();
@@ -55,15 +55,15 @@ final class PreApprovalClientITTest extends TestCase
         $client->get($preapproval_id, $request_options);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $client = new PreApprovalClient();
         $created_preapproval = $client->create($this->createRequest());
         $preapproval = $client->update($created_preapproval->id, $this->updateRequest());
-        $this->assertSame("Yoga classes.", $preapproval->reason);
+        $this->assertEquals("Yoga classes.", $preapproval->reason);
     }
 
-    public function testUpdateWithRequestOptionsFailure(): void
+    public function testUpdateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalClient();
@@ -73,7 +73,7 @@ final class PreApprovalClientITTest extends TestCase
         $client->update($preapproval_id, $this->updateRequest(), $request_options);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $client = new PreApprovalClient();
 
@@ -83,12 +83,12 @@ final class PreApprovalClientITTest extends TestCase
         sleep(3);
         $search_request = new MPSearchRequest(1, 0, ["payer_email" => "test_user_28355466@testuser.com"]);
         $search_result = $client->search($search_request);
-        $this->assertSame(1, $search_result->paging->limit);
-        $this->assertSame(1, count($search_result->results));
+        $this->assertEquals(1, $search_result->paging->limit);
+        $this->assertEquals(1, count($search_result->results));
         $this->assertNotNull($search_result->results[0]->id);
     }
 
-    public function testSearchWithRequestOptionsFailure(): void
+    public function testSearchWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalClient();

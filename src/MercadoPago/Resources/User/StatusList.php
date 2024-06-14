@@ -11,13 +11,13 @@ class StatusList
     use Mapper;
 
     /** Indicates whether buying is allowed (true/false). */
-    public ?bool $allow;
+    public $allow;
 
     /** Buy status codes. */
-    public array|object|null $codes;
+    public $codes;
 
     /** User immediate payment data for buying. */
-    public array|object|null $immediate_payment;
+    public $immediate_payment;
 
     public $map = [
         "immediate_payment" => "MercadoPago\Resources\User\StatusBuyImmediatePayment",

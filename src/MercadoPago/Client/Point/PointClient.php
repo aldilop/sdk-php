@@ -19,22 +19,22 @@ use MercadoPago\Serialization\Serializer;
 /** Client responsible for performing preference actions. */
 final class PointClient extends MercadoPagoClient
 {
-    private const PAYMENT_INTENT_URL = "/point/integration-api/devices/%s/payment-intents";
+    const PAYMENT_INTENT_URL = "/point/integration-api/devices/%s/payment-intents";
 
-    private const PAYMENT_INTENT_SEARCH_URL = "/point/integration-api/payment-intents/%s";
+    const PAYMENT_INTENT_SEARCH_URL = "/point/integration-api/payment-intents/%s";
 
-    private const PAYMENT_INTENT_LIST_URL = "/point/integration-api/payment-intents/events";
+    const PAYMENT_INTENT_LIST_URL = "/point/integration-api/payment-intents/events";
 
-    private const PAYMENT_INTENT_DELETE_URL = "/point/integration-api/devices/%s/payment-intents/%s";
+    const PAYMENT_INTENT_DELETE_URL = "/point/integration-api/devices/%s/payment-intents/%s";
 
-    private const PAYMENT_INTENT_STATUS_URL = "/point/integration-api/payment-intents/%s/events";
+    const PAYMENT_INTENT_STATUS_URL = "/point/integration-api/payment-intents/%s/events";
 
-    private const DEVICES_URL = "/point/integration-api/devices";
+    const DEVICES_URL = "/point/integration-api/devices";
 
-    private const DEVICE_WITH_ID_URL = "/point/integration-api/devices/%s";
+    const DEVICE_WITH_ID_URL = "/point/integration-api/devices/%s";
 
     /** Default constructor. Uses the default http client used by the SDK or custom http client provided. */
-    public function __construct(?MPHttpClient $MPHttpClient = null)
+    public function __construct(MPHttpClient $MPHttpClient = null)
     {
         parent::__construct($MPHttpClient ?: MercadoPagoConfig::getHttpClient());
     }
@@ -48,7 +48,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function createPaymentIntent(string $device_id, array $request, ?RequestOptions $request_options = null): PaymentIntent
+    public function createPaymentIntent(string $device_id, array $request, RequestOptions $request_options = null): PaymentIntent
     {
         $response = parent::send(sprintf(self::PAYMENT_INTENT_URL, $device_id), HttpMethod::POST, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(PaymentIntent::class, $response->getContent());
@@ -64,7 +64,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function searchPaymentIntent(string $payment_intent_id, ?RequestOptions $request_options = null): PaymentIntent
+    public function searchPaymentIntent(string $payment_intent_id, RequestOptions $request_options = null): PaymentIntent
     {
         $response = parent::send(sprintf(self::PAYMENT_INTENT_SEARCH_URL, $payment_intent_id), HttpMethod::GET, null, null, $request_options);
         $result = Serializer::deserializeFromJson(PaymentIntent::class, $response->getContent());
@@ -81,7 +81,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function cancelPaymentIntent(string $device_id, string $payment_intent_id, ?RequestOptions $request_options = null): PaymentIntentCancel
+    public function cancelPaymentIntent(string $device_id, string $payment_intent_id, RequestOptions $request_options = null): PaymentIntentCancel
     {
         $response = parent::send(sprintf(self::PAYMENT_INTENT_DELETE_URL, $device_id, $payment_intent_id), HttpMethod::DELETE, null, null, $request_options);
         $result = Serializer::deserializeFromJson(PaymentIntentCancel::class, $response->getContent());
@@ -97,7 +97,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function getPaymentIntentList(PointPaymentIntentListRequest $request, ?RequestOptions $request_options = null): PaymentIntentList
+    public function getPaymentIntentList(PointPaymentIntentListRequest $request, RequestOptions $request_options = null): PaymentIntentList
     {
         $response = parent::send(self::PAYMENT_INTENT_LIST_URL, HttpMethod::GET, null, $request->getParameters(), $request_options);
         $result = Serializer::deserializeFromJson(PaymentIntentList::class, $response->getContent());
@@ -113,7 +113,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function getPaymentIntentStatus(string $payment_intent_id, ?RequestOptions $request_options = null): PaymentIntentStatus
+    public function getPaymentIntentStatus(string $payment_intent_id, RequestOptions $request_options = null): PaymentIntentStatus
     {
         $response = parent::send(sprintf(self::PAYMENT_INTENT_STATUS_URL, $payment_intent_id), HttpMethod::GET, null, null, $request_options);
         $result = Serializer::deserializeFromJson(PaymentIntentStatus::class, $response->getContent());
@@ -129,7 +129,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function getDevices(MPSearchRequest $request, ?RequestOptions $request_options = null): PointDevices
+    public function getDevices(MPSearchRequest $request, RequestOptions $request_options = null): PointDevices
     {
         $query_params = isset($request) ? $request->getParameters() : null;
         $response = parent::send(self::DEVICES_URL, HttpMethod::GET, null, $query_params, $request_options);
@@ -146,7 +146,7 @@ final class PointClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function changeDeviceOperatingMode(string $device_id, PointDeviceOperatingModeRequest $request, ?RequestOptions $request_options = null): PointDeviceOperatingMode
+    public function changeDeviceOperatingMode(string $device_id, PointDeviceOperatingModeRequest $request, RequestOptions $request_options = null): PointDeviceOperatingMode
     {
         $response = parent::send(sprintf(self::DEVICE_WITH_ID_URL, $device_id), HttpMethod::PATCH, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(PointDeviceOperatingMode::class, $response->getContent());

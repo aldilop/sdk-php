@@ -5,15 +5,20 @@ namespace MercadoPago\Net;
 /** MPResponse class. */
 class MPResponse
 {
+    private $status_code;
+    private $content;
+
     /**
      * MPResponse constructor.
      * @param int $status_code status code of the response.
      * @param array $content content of the response.
      */
     public function __construct(
-        private int $status_code,
-        private array $content
+        int $status_code,
+        array $content
     ) {
+        $this->status_code = $status_code;
+        $this->content = $content;
     }
 
     /**

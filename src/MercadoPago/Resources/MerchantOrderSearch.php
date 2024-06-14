@@ -12,13 +12,13 @@ class MerchantOrderSearch extends MPResource
     use Mapper;
 
     /** Search elements. */
-    public array|object|null $elements;
+    public $elements;
 
     /** Search next offset. */
-    public ?int $next_offset;
+    public $next_offset;
 
     /** Search total. */
-    public ?int $total;
+    public $total;
 
     private $map = [
         "elements" => "MercadoPago\Resources\MerchantOrder\MerchantOrderSearchResult",

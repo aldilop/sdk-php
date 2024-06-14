@@ -14,15 +14,15 @@ use MercadoPago\Tests\Client\Unit\Base\BaseClient;
  */
 final class OAuthClientUnitTest extends BaseClient
 {
-    public function testGetAuthorizationURLSuccess(): void
+    public function testGetAuthorizationURLSuccess()
     {
         $client = new OAuthClient();
         $url = $client->getAuthorizationURL("app_id", "redirect_uri", "random_id");
         $expected = "https://auth.mercadopago.com?client_id=app_id&response_type=code&platform_id=mp&state=random_id&redirect_uri=redirect_uri";
-        $this->assertSame($expected, $url);
+        $this->assertEquals($expected, $url);
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/OAuth/oauth_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -32,18 +32,18 @@ final class OAuthClientUnitTest extends BaseClient
 
         $client = new OAuthClient();
         $oauth = $client->create($this->createRequest());
-        $this->assertSame(200, $oauth->getResponse()->getStatusCode());
-        $this->assertSame("APP_USR-367604750109681-091211-fbad3ab32ad4f89bf1c385141ba5626a-1160535239", $oauth->access_token);
-        $this->assertSame("Bearer", $oauth->token_type);
-        $this->assertSame(15552000, $oauth->expires_in);
-        $this->assertSame("offline_access read write", $oauth->scope);
-        $this->assertSame(1160535239, $oauth->user_id);
-        $this->assertSame("TG-6500883a5f70750001bc46d2-1160535239", $oauth->refresh_token);
-        $this->assertSame("APP_USR-2dfd505a-4b30-4403-878b-f8fb618e58b3", $oauth->public_key);
+        $this->assertEquals(200, $oauth->getResponse()->getStatusCode());
+        $this->assertEquals("APP_USR-367604750109681-091211-fbad3ab32ad4f89bf1c385141ba5626a-1160535239", $oauth->access_token);
+        $this->assertEquals("Bearer", $oauth->token_type);
+        $this->assertEquals(15552000, $oauth->expires_in);
+        $this->assertEquals("offline_access read write", $oauth->scope);
+        $this->assertEquals(1160535239, $oauth->user_id);
+        $this->assertEquals("TG-6500883a5f70750001bc46d2-1160535239", $oauth->refresh_token);
+        $this->assertEquals("APP_USR-2dfd505a-4b30-4403-878b-f8fb618e58b3", $oauth->public_key);
         $this->assertTrue($oauth->live_mode);
     }
 
-    public function testRefreshSuccess(): void
+    public function testRefreshSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/OAuth/oauth_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -53,14 +53,14 @@ final class OAuthClientUnitTest extends BaseClient
 
         $client = new OAuthClient();
         $oauth = $client->refresh($this->refreshRequest());
-        $this->assertSame(200, $oauth->getResponse()->getStatusCode());
-        $this->assertSame("APP_USR-367604750109681-091211-fbad3ab32ad4f89bf1c385141ba5626a-1160535239", $oauth->access_token);
-        $this->assertSame("Bearer", $oauth->token_type);
-        $this->assertSame(15552000, $oauth->expires_in);
-        $this->assertSame("offline_access read write", $oauth->scope);
-        $this->assertSame(1160535239, $oauth->user_id);
-        $this->assertSame("TG-6500883a5f70750001bc46d2-1160535239", $oauth->refresh_token);
-        $this->assertSame("APP_USR-2dfd505a-4b30-4403-878b-f8fb618e58b3", $oauth->public_key);
+        $this->assertEquals(200, $oauth->getResponse()->getStatusCode());
+        $this->assertEquals("APP_USR-367604750109681-091211-fbad3ab32ad4f89bf1c385141ba5626a-1160535239", $oauth->access_token);
+        $this->assertEquals("Bearer", $oauth->token_type);
+        $this->assertEquals(15552000, $oauth->expires_in);
+        $this->assertEquals("offline_access read write", $oauth->scope);
+        $this->assertEquals(1160535239, $oauth->user_id);
+        $this->assertEquals("TG-6500883a5f70750001bc46d2-1160535239", $oauth->refresh_token);
+        $this->assertEquals("APP_USR-2dfd505a-4b30-4403-878b-f8fb618e58b3", $oauth->public_key);
         $this->assertTrue($oauth->live_mode);
     }
 

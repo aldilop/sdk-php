@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\Payment;
 class PaymentFee
 {
     /** Discount type. */
-    public ?string $type;
+    public $type;
 
     /** Discount value. */
-    public ?float $value;
+    public $value;
 }

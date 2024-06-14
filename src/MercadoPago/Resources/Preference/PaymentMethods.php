@@ -11,22 +11,22 @@ class PaymentMethods
     use Mapper;
 
     /** URL to return when the payment succeed. */
-    public ?string $default_payment_method_id;
+    public $default_payment_method_id;
 
     /** URL to return when the payment is pending. */
-    public ?int $installments;
+    public $installments;
 
     /** URL to return when the payment fail. */
-    public ?int $default_installments;
+    public $default_installments;
 
     /** Payment methods not allowed in payment process (except account_money). */
-    public ?array $excluded_payment_methods;
+    public $excluded_payment_methods;
 
     /** Payment types not allowed in payment process. */
-    public ?array $excluded_payment_types;
+    public $excluded_payment_types;
 
     /** Default card ID. */
-    public ?string $default_card_id;
+    public $default_card_id;
 
     private $map = [
         "excluded_payment_methods" => "MercadoPago\Resources\Preference\PaymentMethod",

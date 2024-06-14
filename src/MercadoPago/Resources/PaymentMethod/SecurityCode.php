@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\PaymentMethod;
 class SecurityCode
 {
     /** Security code mode. */
-    public ?string $mode;
+    public $mode;
 
     /** Security code length. */
-    public ?int $length;
+    public $length;
 
     /** Security code card location. */
-    public ?string $card_location;
+    public $card_location;
 }

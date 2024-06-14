@@ -11,16 +11,16 @@ class PaymentMethod
     use Mapper;
 
     /** Payment data. */
-    public array|object|null $data;
+    public $data;
 
     /** ID. */
-    public ?string $id;
+    public $id;
 
     /** Type. */
-    public ?string $type;
+    public $type;
 
     /** Issuer ID. */
-    public ?string $issuer_id;
+    public $issuer_id;
 
     private $map = [
         "data" => "MercadoPago\Resources\Payment\PaymentMethodData",

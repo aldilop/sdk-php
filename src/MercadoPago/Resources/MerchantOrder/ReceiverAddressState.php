@@ -5,8 +5,8 @@ namespace MercadoPago\Resources\MerchantOrder;
 class ReceiverAddressState
 {
     /** State ID. */
-    public ?string $id;
+    public $id;
 
     /** State name. */
-    public ?string $name;
+    public $name;
 }

@@ -6,23 +6,23 @@ namespace MercadoPago\Resources\Payment;
 class BankInfoPayer
 {
     /** ID. */
-    public ?string $id;
+    public $id;
 
     /** Email. */
-    public ?string $email;
+    public $email;
 
     /** Account ID. */
-    public ?string $account_id;
+    public $account_id;
 
     /** Account long name. */
-    public ?string $long_name;
+    public $long_name;
 
     /** External account ID. */
-    public ?string $external_account_id;
+    public $external_account_id;
 
     /** Account Holder Name */
-    public ?string $account_holder_name;
+    public $account_holder_name;
 
     /** Identification */
-    public array|object|null $identification;
+    public $identification;
 }

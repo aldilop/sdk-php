@@ -6,8 +6,8 @@ namespace MercadoPago\Client\Payment;
 class PaymentCaptureRequest
 {
     /** Status cancelled. */
-    public bool $capture = true;
+    public $capture = true;
 
     /** Transaction amount. */
-    public float $transaction_amount;
+    public $transaction_amount;
 }

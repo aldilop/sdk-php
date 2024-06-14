@@ -11,19 +11,19 @@ class BuyerReputationTransactions
     use Mapper;
 
     /** User metrics for canceled transactions. */
-    public array|object|null $canceled;
+    public $canceled;
 
     /** The number of completed transactions. */
     public $completed;
 
     /** User metrics for transactions not yet rated. */
-    public array|object|null $not_yet_rated;
+    public $not_yet_rated;
 
     /** The transaction period (e.g., "historic"). */
-    public ?string $period;
+    public $period;
 
     /** User metrics for unrated transactions. */
-    public array|object|null $unrated;
+    public $unrated;
 
     /** Total of transactions. */
     public $total;

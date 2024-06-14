@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\PaymentMethod;
 class FinancialInstitutions
 {
     /** Financial institution ID. */
-    public ?int $id;
+    public $id;
 
     /** Financial institution description. */
-    public ?string $description;
+    public $description;
 }

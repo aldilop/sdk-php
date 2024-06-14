@@ -6,26 +6,26 @@ namespace MercadoPago\Resources\Preference;
 class Item
 {
     /** Item code. */
-    public ?string $id;
+    public $id;
 
     /** Item name. */
-    public ?string $title;
+    public $title;
 
     /** Long item description. */
-    public ?string $description;
+    public $description;
 
     /** Image URL. */
-    public ?string $picture_url;
+    public $picture_url;
 
     /** Category of the item. */
-    public ?string $category_id;
+    public $category_id;
 
     /** Item's quantity. */
-    public ?int $quantity;
+    public $quantity;
 
     /** Unit price. */
-    public ?float $unit_price;
+    public $unit_price;
 
     /** Currency ID. ISO_4217 code. */
-    public ?string $currency_id;
+    public $currency_id;
 }

@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\User;
 class StatusBuyImmediatePayment
 {
     /** Reasons for immediate payment. */
-    public ?array $reasons;
+    public $reasons;
 
     /** Indicates whether immediate payment is required for buying (true/false). */
-    public ?bool $required;
+    public $required;
 }

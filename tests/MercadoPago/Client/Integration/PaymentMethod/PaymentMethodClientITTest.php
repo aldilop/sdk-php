@@ -13,21 +13,21 @@ use PHPUnit\Framework\TestCase;
  */
 final class PaymentMethodClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new PaymentMethodClient();
         $payment_method = $client->list();
         $this->assertNotNull($payment_method);
-        $this->assertSame(200, $payment_method->getResponse()->getStatusCode());
+        $this->assertEquals(200, $payment_method->getResponse()->getStatusCode());
         $this->assertNotNull($payment_method->data[0]->id);
     }
 
-    public function testGetWithInvalidAccessTokenFailure(): void
+    public function testGetWithInvalidAccessTokenFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PaymentMethodClient();

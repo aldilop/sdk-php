@@ -6,5 +6,5 @@ namespace MercadoPago\Client\Customer;
 class CustomerCreateRequest
 {
     /** Customer email. */
-    public string $email;
+    public $email;
 }

@@ -11,10 +11,10 @@ class Cardholder
     use Mapper;
 
     /** Cardholder Name. */
-    public ?string $name;
+    public $name;
 
     /** Cardholder identification. */
-    public array|object|null $identification;
+    public $identification;
 
     private $map = [
         "identification" => "MercadoPago\Resources\Payment\Identification"

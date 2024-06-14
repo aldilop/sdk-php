@@ -12,7 +12,7 @@ class CustomerCardResult extends MPResource
     use Mapper;
 
     /** Customer Card Result data. */
-    public array|object|null $data;
+    public $data;
 
     private $map = [
         "data" => "MercadoPago\Resources\Customer\CustomerCardListResult",

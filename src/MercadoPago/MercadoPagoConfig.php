@@ -10,49 +10,49 @@ use MercadoPago\Net\MPHttpClient;
 class MercadoPagoConfig
 {
     /** @var string Mercado Pago SDK version. */
-    public static string $CURRENT_VERSION = "3.0.5";
+    public static $CURRENT_VERSION = "3.0.5";
 
     /** @var string Mercado Pago Base URL */
-    public static string $BASE_URL = "https://api.mercadopago.com";
+    public static $BASE_URL = "https://api.mercadopago.com";
 
     /** @var string Mercado Pago SDK PHP product version */
-    public static string $PRODUCT_ID = "BC32A7RU643001OI3940";
+    public static $PRODUCT_ID = "BC32A7RU643001OI3940";
 
     /** @var string Class constant for local runtime enviroment */
-    public const LOCAL = 'local';
+    const LOCAL = 'local';
 
     /** @var string Class constant for server runtime enviroment */
-    public const SERVER = 'server';
+    const SERVER = 'server';
 
     /** @var string Actual enviroment the user is running at. Default is SERVER */
-    private static string $runtime_enviroment = self::SERVER;
+    private static $runtime_enviroment = self::SERVER;
 
     /** @var string access token */
-    private static string $access_token = "";
+    private static $access_token = "";
 
     /** @var string integrator id */
-    private static string $integrator_id = "";
+    private static $integrator_id = "";
 
     /** @var string corporation id */
-    private static string $corporation_id = "";
+    private static $corporation_id = "";
 
     /** @var string platform id */
-    private static string $platform_id = "";
+    private static $platform_id = "";
 
     /** @var int max retries */
-    private static int $max_retries = 3;
+    private static $max_retries = 3;
 
     /** @var int retry delay (in milliseconds) */
-    private static int $retry_delay = 500;
+    private static $retry_delay = 500;
 
     /** @var int max connections */
-    private static int $max_connections = 10;
+    private static $max_connections = 10;
 
     /** @var int connection timeout */
-    private static int $connection_timeout = 20000;
+    private static $connection_timeout = 20000;
 
     /** @var MPHttpClient http client */
-    private static ?MPHttpClient $http_client = null;
+    private static $http_client = null;
 
     /**
      * Verifies which http client use.
@@ -70,7 +70,7 @@ class MercadoPagoConfig
      * Sets http client.
      * @param \MercadoPago\Net\MPHttpClient $http_client http client
      */
-    public static function setHttpClient(MPHttpClient $http_client): void
+    public static function setHttpClient(MPHttpClient $http_client)
     {
         self::$http_client = $http_client;
     }
@@ -89,7 +89,7 @@ class MercadoPagoConfig
      * @param string $access_token access token
      * @return void access token
      */
-    public static function setAccessToken(string $access_token): void
+    public static function setAccessToken(string $access_token)
     {
         self::$access_token = $access_token;
     }
@@ -108,7 +108,7 @@ class MercadoPagoConfig
      * @param string $integrator_id integrator id
      * @return void integrator id
      */
-    public static function setIntegratorId(string $integrator_id): void
+    public static function setIntegratorId(string $integrator_id)
     {
         self::$integrator_id = $integrator_id;
     }
@@ -127,7 +127,7 @@ class MercadoPagoConfig
      * @param string $corporation_id corporation id
      * @return void corporation id
      */
-    public static function setCorporationId(string $corporation_id): void
+    public static function setCorporationId(string $corporation_id)
     {
         self::$corporation_id = $corporation_id;
     }
@@ -146,7 +146,7 @@ class MercadoPagoConfig
      * @param string $platform_id platform id
      * @return void platform id
      */
-    public static function setPlatformId(string $platform_id): void
+    public static function setPlatformId(string $platform_id)
     {
         self::$platform_id = $platform_id;
     }
@@ -165,7 +165,7 @@ class MercadoPagoConfig
      * @param int $max_retries max retries
      * @return void max retries
      */
-    public static function setMaxRetries(int $max_retries): void
+    public static function setMaxRetries(int $max_retries)
     {
         self::$max_retries = $max_retries;
     }
@@ -184,7 +184,7 @@ class MercadoPagoConfig
      * @param int $retry_delay retry delay
      * @return void retry delay
      */
-    public static function setRetryDelay(int $retry_delay): void
+    public static function setRetryDelay(int $retry_delay)
     {
         self::$retry_delay = $retry_delay;
     }
@@ -203,7 +203,7 @@ class MercadoPagoConfig
      * @param int $max_connections max connections
      * @return void max connections
      */
-    public static function setMaxConnections(int $max_connections): void
+    public static function setMaxConnections(int $max_connections)
     {
         self::$max_connections = $max_connections;
     }
@@ -222,7 +222,7 @@ class MercadoPagoConfig
      * @param int $connection_timeout connection timeout
      * @return void connection timeout
      */
-    public static function setConnectionTimeout(int $connection_timeout): void
+    public static function setConnectionTimeout(int $connection_timeout)
     {
         self::$connection_timeout = $connection_timeout;
     }
@@ -241,7 +241,7 @@ class MercadoPagoConfig
      * @param string $enviroment one of the ENVIROMENT_TYPES
      * @return void
      */
-    public static function setRuntimeEnviroment(string $enviroment): void
+    public static function setRuntimeEnviroment(string $enviroment)
     {
         if ($enviroment != self::LOCAL && $enviroment != self::SERVER) {
             throw new InvalidArgumentException("Enviroment must be equal to MercadoPagoConfig::LOCAL or MercadoPagoConfig::SERVER.");

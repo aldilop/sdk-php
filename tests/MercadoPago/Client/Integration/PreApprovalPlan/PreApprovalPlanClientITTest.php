@@ -14,19 +14,19 @@ use PHPUnit\Framework\TestCase;
  */
 final class PreApprovalPlanClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client = new PreApprovalPlanClient();
         $plan = $client->create($this->createRequest());
         $this->assertNotNull($plan->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalPlanClient();
@@ -36,7 +36,7 @@ final class PreApprovalPlanClientITTest extends TestCase
         $client->create($request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new PreApprovalPlanClient();
         $created_plan = $client->create($this->createRequest());
@@ -45,7 +45,7 @@ final class PreApprovalPlanClientITTest extends TestCase
         $this->assertNotNull($plan->init_point);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalPlanClient();
@@ -55,15 +55,15 @@ final class PreApprovalPlanClientITTest extends TestCase
         $client->get($created_plan->id, $request_options);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $client = new PreApprovalPlanClient();
         $created_plan = $client->create($this->createRequest());
         $plan = $client->update($created_plan->id, $this->updateRequest());
-        $this->assertSame("reason", $plan->reason);
+        $this->assertEquals("reason", $plan->reason);
     }
 
-    public function testUpdateWithRequestOptionsFailure(): void
+    public function testUpdateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalPlanClient();
@@ -73,7 +73,7 @@ final class PreApprovalPlanClientITTest extends TestCase
         $client->update($created_plan->id, $this->updateRequest(), $request_options);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $client = new PreApprovalPlanClient();
 
@@ -83,12 +83,12 @@ final class PreApprovalPlanClientITTest extends TestCase
         sleep(3);
         $search_request = new MPSearchRequest(1, 0, ["back_url" => "https://www.yoursite.com"]);
         $search_result = $client->search($search_request);
-        $this->assertSame(1, $search_result->paging->limit);
-        $this->assertSame(1, count($search_result->results));
+        $this->assertEquals(1, $search_result->paging->limit);
+        $this->assertEquals(1, count($search_result->results));
         $this->assertNotNull($search_result->results[0]->id);
     }
 
-    public function testSearchWithRequestOptionsFailure(): void
+    public function testSearchWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PreApprovalPlanClient();

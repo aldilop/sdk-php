@@ -11,13 +11,13 @@ class PaymentMethodRules
     use Mapper;
 
     /** Payment discounts. */
-    public ?array $discounts;
+    public $discounts;
 
     /** Payment fine. */
-    public array|object|null $fine;
+    public $fine;
 
     /** Payment interest. */
-    public array|object|null $interest;
+    public $interest;
 
     private $map = [
         "discounts" => "MercadoPago\Resources\Payment\PaymentDiscounts",

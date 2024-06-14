@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\PaymentMethod;
 class Bin
 {
     /** Bin pattern. */
-    public ?string $pattern;
+    public $pattern;
 
     /** Bin exclusion pattern. */
-    public ?string $exclusion_pattern;
+    public $exclusion_pattern;
 
     /** Bin installments pattern. */
-    public ?string $installments_pattern;
+    public $installments_pattern;
 }

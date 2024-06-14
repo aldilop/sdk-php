@@ -11,19 +11,19 @@ class Transactions
     use Mapper;
 
     /** The number of canceled transactions. */
-    public ?int $canceled;
+    public $canceled;
 
     /** The number of completed transactions. */
-    public ?int $completed;
+    public $completed;
 
     /** The transaction period (e.g., "historic"). */
-    public ?string $period;
+    public $period;
 
     /** User ratings and feedback statistics. */
-    public array|object|null $ratings;
+    public $ratings;
 
     /** The total number of transactions. */
-    public ?int $total;
+    public $total;
 
     public $map = [
         "ratings" => "MercadoPago\Resources\User\Ratings",

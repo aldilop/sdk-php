@@ -6,5 +6,5 @@ namespace MercadoPago\Resources\Preference;
 class PaymentType
 {
     /** Payment type ID. */
-    public ?string $id;
+    public $id;
 }

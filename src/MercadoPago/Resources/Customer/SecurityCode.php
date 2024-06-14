@@ -6,9 +6,9 @@ namespace MercadoPago\Resources\Customer;
 class SecurityCode
 {
     /** Length of security code. */
-    public ?int $length;
+    public $length;
 
     /** Location of security code in the card. */
-    public ?string $card_location;
+    public $card_location;
 
 }

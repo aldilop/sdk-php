@@ -15,12 +15,12 @@ use PHPUnit\Framework\TestCase;
  */
 final class MerchantOrderClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client_preference = new PreferenceClient();
         $preference = $client_preference->create($this->createPreferenceRequest());
@@ -31,7 +31,7 @@ final class MerchantOrderClientITTest extends TestCase
         $this->assertNotNull($merchant_order->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new MerchantOrderClient();
@@ -41,7 +41,7 @@ final class MerchantOrderClientITTest extends TestCase
         $client->create($request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client_preference = new PreferenceClient();
         $preference = $client_preference->create($this->createPreferenceRequest());
@@ -53,10 +53,10 @@ final class MerchantOrderClientITTest extends TestCase
 
         $merchant_order_getted = $client->get($merchant_order_created->id);
         $this->assertNotNull($merchant_order_getted->id);
-        $this->assertSame("test_reference", $merchant_order_getted->external_reference);
+        $this->assertEquals("test_reference", $merchant_order_getted->external_reference);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new MerchantOrderClient();
@@ -66,7 +66,7 @@ final class MerchantOrderClientITTest extends TestCase
         $client->get($created_merchantorder->id, $request_options);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $client_preference = new PreferenceClient();
         $preference = $client_preference->create($this->createPreferenceRequest());
@@ -78,10 +78,10 @@ final class MerchantOrderClientITTest extends TestCase
 
         $merchant_order_updated = $client->update($merchant_order_created->id, $this->updateRequest());
         $this->assertNotNull($merchant_order_updated->id);
-        $this->assertSame("https://www.test.com", $merchant_order_updated->notification_url);
+        $this->assertEquals("https://www.test.com", $merchant_order_updated->notification_url);
     }
 
-    public function testUpdateWithRequestOptionsFailure(): void
+    public function testUpdateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new MerchantOrderClient();
@@ -91,7 +91,7 @@ final class MerchantOrderClientITTest extends TestCase
         $client->update($created_merchantorder->id, $this->updateRequest(), $request_options);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $client_preference = new PreferenceClient();
         $preference = $client_preference->create($this->createPreferenceRequest());
@@ -104,13 +104,13 @@ final class MerchantOrderClientITTest extends TestCase
         sleep(3);
         $search_request = new MPSearchRequest(1, 0, ["preference_id" => $preference->id]);
         $search_result = $client->search($search_request);
-        $this->assertSame(1, $search_result->next_offset);
-        $this->assertSame(1, $search_result->total);
-        $this->assertSame(1, count($search_result->elements));
-        $this->assertSame($merchant_order_created->id, $search_result->elements[0]->id);
+        $this->assertEquals(1, $search_result->next_offset);
+        $this->assertEquals(1, $search_result->total);
+        $this->assertEquals(1, count($search_result->elements));
+        $this->assertEquals($merchant_order_created->id, $search_result->elements[0]->id);
     }
 
-    public function testSearchWithRequestOptionsFailure(): void
+    public function testSearchWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new MerchantOrderClient();

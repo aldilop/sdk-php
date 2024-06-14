@@ -12,7 +12,7 @@ class PaymentRefundResult extends MPResource
     use Mapper;
 
     /** Data. */
-    public array|object|null $data;
+    public $data;
 
     private $map = [
         "data" => "MercadoPago\Resources\Payment\PaymentRefundListResult",

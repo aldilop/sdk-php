@@ -6,5 +6,5 @@ namespace MercadoPago\Client\Point;
 class PointDeviceOperatingModeRequest
 {
     /** Operating mode. */
-    public string $operating_mode;
+    public $operating_mode;
 }

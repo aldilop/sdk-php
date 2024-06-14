@@ -11,13 +11,13 @@ class BuyerReputation
     use Mapper;
 
     /** The number of canceled transactions. */
-    public ?int $canceled_transactions;
+    public $canceled_transactions;
 
     /** User tags associated with the buyer reputation. */
-    public ?array $tags;
+    public $tags;
 
     /** User transaction metrics and statistics. */
-    public array|object|null $transactions;
+    public $transactions;
 
     public $map = [
         "transactions" => "MercadoPago\Resources\User\BuyerReputationTransactions",

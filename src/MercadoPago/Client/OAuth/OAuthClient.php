@@ -13,12 +13,12 @@ use MercadoPago\Serialization\Serializer;
 /** Client responsible for performing OAuth authorizartion. */
 final class OAuthClient extends MercadoPagoClient
 {
-    private const AUTH_URL = "https://auth.mercadopago.com";
+    const AUTH_URL = "https://auth.mercadopago.com";
 
-    private const URL = "/oauth/token";
+    const URL = "/oauth/token";
 
     /** Default constructor. Uses the default http client used by the SDK or custom http client provided. */
-    public function __construct(?MPHttpClient $MPHttpClient = null)
+    public function __construct(MPHttpClient $MPHttpClient = null)
     {
         parent::__construct($MPHttpClient ?: MercadoPagoConfig::getHttpClient());
     }
@@ -51,7 +51,7 @@ final class OAuthClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function create(OAuthCreateRequest $request, ?RequestOptions $request_options = null): OAuth
+    public function create(OAuthCreateRequest $request, RequestOptions $request_options = null): OAuth
     {
         $response = parent::send(self::URL, HttpMethod::POST, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(OAuth::class, $response->getContent());
@@ -67,7 +67,7 @@ final class OAuthClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function refresh(OAuthRefreshRequest $request, ?RequestOptions $request_options = null): OAuth
+    public function refresh(OAuthRefreshRequest $request, RequestOptions $request_options = null): OAuth
     {
         $response = parent::send(self::URL, HttpMethod::POST, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(OAuth::class, $response->getContent());

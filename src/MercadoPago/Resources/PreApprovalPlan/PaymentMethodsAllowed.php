@@ -8,9 +8,9 @@ use MercadoPago\Serialization\Mapper;
 class PaymentMethodsAllowed
 {
     /** Payment types. */
-    public ?array $payment_types;
+    public $payment_types;
 
     /** Payment methods. */
-    public ?array $payment_methods;
+    public $payment_methods;
 
 }

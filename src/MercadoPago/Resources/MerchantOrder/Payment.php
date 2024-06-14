@@ -5,41 +5,41 @@ namespace MercadoPago\Resources\MerchantOrder;
 class Payment
 {
     /** Payment ID. */
-    public ?int $id;
+    public $id;
 
     /** Product cost. */
-    public ?float $transaction_amount;
+    public $transaction_amount;
 
     /** Total amount paid. */
-    public ?float $total_paid_amount;
+    public $total_paid_amount;
 
     /** Shipping fee. */
-    public ?float $shipping_cost;
+    public $shipping_cost;
 
     /** ID of the currency used in payment. */
-    public ?string $currency_id;
+    public $currency_id;
 
     /** Payment status. */
-    public ?string $status;
+    public $status;
 
     /** @deprecated deprecated since SDK version 3.0.4. */
-    public ?string $status_details;
+    public $status_details;
 
     /** Gives more detailed information on the current state or rejection cause. */
-    public ?string $status_detail;
+    public $status_detail;
 
     /** Operation type. */
-    public ?string $operation_type;
+    public $operation_type;
 
     /** Approval date. */
-    public ?string $date_approved;
+    public $date_approved;
 
     /** Date of creation. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Last modified date. */
-    public ?string $last_modified;
+    public $last_modified;
 
     /** Amount refunded in this payment. */
-    public ?float $amount_refunded;
+    public $amount_refunded;
 }

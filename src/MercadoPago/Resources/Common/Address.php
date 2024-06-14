@@ -11,19 +11,19 @@ class Address
     use Mapper;
 
     /** Addess ID. */
-    public ?string $id;
+    public $id;
 
     /** Zip code. */
-    public ?string $zip_code;
+    public $zip_code;
 
     /** Street name. */
-    public ?string $street_name;
+    public $street_name;
 
     /** Street number. */
-    public ?int $street_number;
+    public $street_number;
 
     /** City. */
-    public array|object|null $city;
+    public $city;
 
     private $map = [
         "city" => "MercadoPago\Resources\Common\City"

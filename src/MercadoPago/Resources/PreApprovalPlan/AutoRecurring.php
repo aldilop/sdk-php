@@ -11,31 +11,31 @@ class AutoRecurring
     use Mapper;
 
     /** Frequency. */
-    public ?int $frequency;
+    public $frequency;
 
     /** Frequency type. */
-    public ?string $frequency_type;
+    public $frequency_type;
 
     /** Transaction amount. */
-    public ?float $transaction_amount;
+    public $transaction_amount;
 
     /** Currency ID. */
-    public ?string $currency_id;
+    public $currency_id;
 
     /** Number of repetitions. */
-    public ?int $repetitions;
+    public $repetitions;
 
     /** Free trial details. */
-    public ?object $free_trial;
+    public $free_trial;
 
     /** Billing day. */
-    public ?int $billing_day;
+    public $billing_day;
 
     /** Billing day proportional. */
-    public ?bool $billing_day_proportional;
+    public $billing_day_proportional;
 
     /** Transaction amount proportional. */
-    public ?float $transaction_amount_proportional;
+    public $transaction_amount_proportional;
 
     public $map = [
         "free_trial" => "MercadoPago\Resources\PreApprovalPlan\FreeTrial",

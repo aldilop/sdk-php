@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class BaseClient extends TestCase
 {
-    protected function mockHttpRequest(string $filepath, int $status_code): \PHPUnit\Framework\MockObject\MockObject|\MercadoPago\Net\HttpRequest
+    protected function mockHttpRequest(string $filepath, int $status_code): \MercadoPago\Net\HttpRequest
     {
         /** @var \PHPUnit\Framework\MockObject\MockObject|\MercadoPago\Net\HttpRequest $mock_http_request */
         $mock_http_request = $this->getMockBuilder(\MercadoPago\Net\HttpRequest::class)->getMock();

@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\Common;
 class Source
 {
     /** Source ID. */
-    public ?string $id;
+    public $id;
 
     /** Source name. */
-    public ?string $name;
+    public $name;
 
     /** Source type. */
-    public ?string $type;
+    public $type;
 }

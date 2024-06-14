@@ -12,7 +12,7 @@ class IdentificationTypeResult extends MPResource
     use Mapper;
 
     /** Identification Type Result data. */
-    public array|object|null $data;
+    public $data;
 
     private $map = [
         "data" => "MercadoPago\Resources\IdentificationType\IdentificationTypeListResult",

@@ -11,16 +11,16 @@ class Metrics
     use Mapper;
 
     /** User sales metrics for a specific period. */
-    public array|object|null $sales;
+    public $sales;
 
     /** User claims metrics for a specific period. */
-    public array|object|null $claims;
+    public $claims;
 
     /** User delayed handling time metrics for a specific period. */
-    public array|object|null $delayed_handling_time;
+    public $delayed_handling_time;
 
     /** User cancellations metrics for a specific period. */
-    public array|object|null $cancellations;
+    public $cancellations;
 
     public $map = [
         "sales" => "MercadoPago\Resources\User\Sales",

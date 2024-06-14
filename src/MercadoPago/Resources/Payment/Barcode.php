@@ -6,5 +6,5 @@ namespace MercadoPago\Resources\Payment;
 class Barcode
 {
     /** Content info. */
-    public ?string $content;
+    public $content;
 }

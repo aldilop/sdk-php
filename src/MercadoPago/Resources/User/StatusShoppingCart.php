@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\User;
 class StatusShoppingCart
 {
     /** Indicates whether buying from the shopping cart is allowed. */
-    public ?string $buy;
+    public $buy;
 
     /** Indicates whether selling from the shopping cart is allowed. */
-    public ?string $sell;
+    public $sell;
 }

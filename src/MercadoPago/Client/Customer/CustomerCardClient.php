@@ -14,12 +14,12 @@ use MercadoPago\Serialization\Serializer;
 /** Client responsible for performing customer card actions. */
 final class CustomerCardClient extends MercadoPagoClient
 {
-    private const URL_CUSTOMER_ID = "/v1/customers/%s/cards";
+    const URL_CUSTOMER_ID = "/v1/customers/%s/cards";
 
-    private const URL_CUSTOMER_ID_AND_CARD_ID = "/v1/customers/%s/cards/%s";
+    const URL_CUSTOMER_ID_AND_CARD_ID = "/v1/customers/%s/cards/%s";
 
     /** Default constructor. Uses the default http client used by the SDK or custom http client provided. */
-    public function __construct(?MPHttpClient $MPHttpClient = null)
+    public function __construct(MPHttpClient $MPHttpClient = null)
     {
         parent::__construct($MPHttpClient ?: MercadoPagoConfig::getHttpClient());
     }
@@ -33,7 +33,7 @@ final class CustomerCardClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function create(string $customer_id, array $request, ?RequestOptions $request_options = null): CustomerCard
+    public function create(string $customer_id, array $request, RequestOptions $request_options = null): CustomerCard
     {
         $response = parent::send(sprintf(self::URL_CUSTOMER_ID, $customer_id), HttpMethod::POST, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(CustomerCard::class, $response->getContent());
@@ -50,7 +50,7 @@ final class CustomerCardClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function get(string $customer_id, string $card_id, ?RequestOptions $request_options = null): CustomerCard
+    public function get(string $customer_id, string $card_id, RequestOptions $request_options = null): CustomerCard
     {
         $response = parent::send(sprintf(self::URL_CUSTOMER_ID_AND_CARD_ID, $customer_id, $card_id), HttpMethod::GET, null, null, $request_options);
         $result = Serializer::deserializeFromJson(CustomerCard::class, $response->getContent());
@@ -67,7 +67,7 @@ final class CustomerCardClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function update(string $customer_id, string $card_id, array $request, ?RequestOptions $request_options = null): CustomerCard
+    public function update(string $customer_id, string $card_id, array $request, RequestOptions $request_options = null): CustomerCard
     {
         $response = parent::send(sprintf(self::URL_CUSTOMER_ID_AND_CARD_ID, $customer_id, $card_id), HttpMethod::PUT, json_encode($request), null, $request_options);
         $result = Serializer::deserializeFromJson(CustomerCard::class, $response->getContent());
@@ -84,7 +84,7 @@ final class CustomerCardClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function delete(string $customer_id, string $card_id, ?RequestOptions $request_options = null): CustomerCard
+    public function delete(string $customer_id, string $card_id, RequestOptions $request_options = null): CustomerCard
     {
         $response = parent::send(sprintf(self::URL_CUSTOMER_ID_AND_CARD_ID, $customer_id, $card_id), HttpMethod::DELETE, null, null, $request_options);
         $result = Serializer::deserializeFromJson(CustomerCard::class, $response->getContent());
@@ -100,7 +100,7 @@ final class CustomerCardClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function list(string $customer_id, ?RequestOptions $request_options = null): CustomerCardResult
+    public function list(string $customer_id, RequestOptions $request_options = null): CustomerCardResult
     {
         $response = parent::send(sprintf(self::URL_CUSTOMER_ID, $customer_id), HttpMethod::GET, null, null, $request_options);
         $result_data = array("data" => $response->getContent());

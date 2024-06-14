@@ -12,7 +12,7 @@ use MercadoPago\Tests\Client\Unit\Base\BaseClient;
  */
 final class IdentificationTypeClientUnitTest extends BaseClient
 {
-    public function testListSuccess(): void
+    public function testListSuccess()
     {
         $file_path = '../../../../Resources/Mocks/Response/IdentificationType/identification_type_list.json';
         $mock_http_request = $this->mockHttpRequest($file_path, 200);
@@ -23,20 +23,20 @@ final class IdentificationTypeClientUnitTest extends BaseClient
         $client = new IdentificationTypeClient();
         $identification_type_result = $client->list();
         $this->assertNotNull($identification_type_result->data);
-        $this->assertSame(200, $identification_type_result->getResponse()->getStatusCode());
+        $this->assertEquals(200, $identification_type_result->getResponse()->getStatusCode());
         $this->assertCount(2, $identification_type_result->getResponse()->getContent());
         $this->assertCount(2, $identification_type_result->data);
 
-        $this->assertSame("CPF", $identification_type_result->data[0]->id);
-        $this->assertSame("CPF", $identification_type_result->data[0]->name);
-        $this->assertSame("number", $identification_type_result->data[0]->type);
-        $this->assertSame(11, $identification_type_result->data[0]->min_length);
-        $this->assertSame(11, $identification_type_result->data[0]->max_length);
+        $this->assertEquals("CPF", $identification_type_result->data[0]->id);
+        $this->assertEquals("CPF", $identification_type_result->data[0]->name);
+        $this->assertEquals("number", $identification_type_result->data[0]->type);
+        $this->assertEquals(11, $identification_type_result->data[0]->min_length);
+        $this->assertEquals(11, $identification_type_result->data[0]->max_length);
 
-        $this->assertSame("CNPJ", $identification_type_result->data[1]->id);
-        $this->assertSame("CNPJ", $identification_type_result->data[1]->name);
-        $this->assertSame("number", $identification_type_result->data[1]->type);
-        $this->assertSame(14, $identification_type_result->data[1]->min_length);
-        $this->assertSame(14, $identification_type_result->data[1]->max_length);
+        $this->assertEquals("CNPJ", $identification_type_result->data[1]->id);
+        $this->assertEquals("CNPJ", $identification_type_result->data[1]->name);
+        $this->assertEquals("number", $identification_type_result->data[1]->type);
+        $this->assertEquals(14, $identification_type_result->data[1]->min_length);
+        $this->assertEquals(14, $identification_type_result->data[1]->max_length);
     }
 }

@@ -14,19 +14,19 @@ use PHPUnit\Framework\TestCase;
  */
 final class PaymentClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client = new PaymentClient();
         $payment = $client->create($this->createRequest());
         $this->assertNotNull($payment->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PaymentClient();
@@ -36,7 +36,7 @@ final class PaymentClientITTest extends TestCase
         $client->create($request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new PaymentClient();
         $created_payment = $client->create($this->createRequest());
@@ -44,7 +44,7 @@ final class PaymentClientITTest extends TestCase
         $this->assertNotNull($payment->id);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PaymentClient();
@@ -54,16 +54,16 @@ final class PaymentClientITTest extends TestCase
         $client->get($created_payment->id, $request_options);
     }
 
-    public function testCancelSuccess(): void
+    public function testCancelSuccess()
     {
         $client = new PaymentClient();
         $created_payment = $client->create($this->createRequest());
         $payment = $client->cancel($created_payment->id);
         $this->assertNotNull($payment->id);
-        $this->assertSame("cancelled", $payment->status);
+        $this->assertEquals("cancelled", $payment->status);
     }
 
-    public function testCancelWithRequestOptionsFailure(): void
+    public function testCancelWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PaymentClient();
@@ -73,21 +73,21 @@ final class PaymentClientITTest extends TestCase
         $client->cancel($created_payment->id, $request_options);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $client = new PaymentClient();
         $created_payment = $client->create($this->createRequest());
         $search_request = new MPSearchRequest(1, 0, ["id" => $created_payment->id]);
         $search_result = $client->search($search_request);
         $this->assertNotNull($search_result->paging);
-        $this->assertSame(1, $search_result->paging->total);
-        $this->assertSame(0, $search_result->paging->offset);
+        $this->assertEquals(1, $search_result->paging->total);
+        $this->assertEquals(0, $search_result->paging->offset);
         $this->assertNotNull($search_result->results);
-        $this->assertSame(1, count($search_result->results));
-        $this->assertSame($created_payment->id, $search_result->results[0]->id);
+        $this->assertEquals(1, count($search_result->results));
+        $this->assertEquals($created_payment->id, $search_result->results[0]->id);
     }
 
-    public function testSearchWithRequestOptionsFailure(): void
+    public function testSearchWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new PaymentClient();

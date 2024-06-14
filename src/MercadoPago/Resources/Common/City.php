@@ -6,8 +6,8 @@ namespace MercadoPago\Resources\Common;
 class City
 {
     /** City ID. */
-    public ?string $id;
+    public $id;
 
     /** City name. */
-    public ?string $name;
+    public $name;
 }

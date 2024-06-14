@@ -6,14 +6,14 @@ namespace MercadoPago\Client\OAuth;
 class OAuthRefreshRequest
 {
     /** Client secret. */
-    public string $client_secret;
+    public $client_secret;
 
     /** Client ID. */
-    public string $client_id;
+    public $client_id;
 
     /** Grant type. */
-    public string $grant_type = "refresh_token";
+    public $grant_type = "refresh_token";
 
     /** Refresh token. */
-    public string $refresh_token;
+    public $refresh_token;
 }

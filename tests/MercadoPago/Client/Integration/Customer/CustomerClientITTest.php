@@ -14,12 +14,12 @@ use PHPUnit\Framework\TestCase;
  */
 final class CustomerClientITTest extends TestCase
 {
-    public static function setUpBeforeClass(): void
+    public static function setUpBeforeClass()
     {
         MercadoPagoConfig::setAccessToken(getenv("ACCESS_TOKEN"));
     }
 
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $client = new CustomerClient();
         $id = rand(100000, 200000);
@@ -28,7 +28,7 @@ final class CustomerClientITTest extends TestCase
         $this->assertNotNull($customer->id);
     }
 
-    public function testCreateByEmailSuccess(): void
+    public function testCreateByEmailSuccess()
     {
         $client = new CustomerClient();
         $id = rand(100000, 200000);
@@ -37,7 +37,7 @@ final class CustomerClientITTest extends TestCase
         $this->assertNotNull($customer->id);
     }
 
-    public function testCreateWithRequestOptionsFailure(): void
+    public function testCreateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerClient();
@@ -49,7 +49,7 @@ final class CustomerClientITTest extends TestCase
         $client->create($request, $request_options);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $client = new CustomerClient();
         $id = rand(100000, 200000);
@@ -60,7 +60,7 @@ final class CustomerClientITTest extends TestCase
         $this->assertNotNull($get_customer->id);
     }
 
-    public function testGetWithRequestOptionsFailure(): void
+    public function testGetWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerClient();
@@ -69,7 +69,7 @@ final class CustomerClientITTest extends TestCase
         $client->get("1469979538-52qKdADBYeloaX", $request_options);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $client = new CustomerClient();
         $id = rand(100000, 200000);
@@ -79,10 +79,10 @@ final class CustomerClientITTest extends TestCase
 
         $description_customer = "Test update";
         $update_customer = $client->update($customer->id, $this->updateRequest($description_customer));
-        $this->assertSame("Test update", $update_customer->description);
+        $this->assertEquals("Test update", $update_customer->description);
     }
 
-    public function testUpdateWithRequestOptionsFailure(): void
+    public function testUpdateWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerClient();
@@ -92,7 +92,7 @@ final class CustomerClientITTest extends TestCase
     }
 
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $client = new CustomerClient();
         $id = rand(100000, 200000);
@@ -103,15 +103,15 @@ final class CustomerClientITTest extends TestCase
         sleep(3);
         $search_result = $client->search($search_request);
         $this->assertNotNull($search_result->paging);
-        $this->assertSame(1, $search_result->paging->total);
-        $this->assertSame(0, $search_result->paging->offset);
+        $this->assertEquals(1, $search_result->paging->total);
+        $this->assertEquals(0, $search_result->paging->offset);
         $this->assertNotNull($search_result->results);
-        $this->assertSame(1, count($search_result->results));
-        $this->assertSame($created_customer->id, $search_result->results[0]->id);
-        $this->assertSame("São Paulo", $search_result->results[0]->address->city->name);
+        $this->assertEquals(1, count($search_result->results));
+        $this->assertEquals($created_customer->id, $search_result->results[0]->id);
+        $this->assertEquals("São Paulo", $search_result->results[0]->address->city->name);
     }
 
-    public function testSearchWithRequestOptionsFailure(): void
+    public function testSearchWithRequestOptionsFailure()
     {
         $this->expectException(MPApiException::class);
         $client = new CustomerClient();

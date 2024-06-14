@@ -12,214 +12,214 @@ class Payment extends MPResource
     use Mapper;
 
     /** Payment ID. */
-    public ?int $id;
+    public $id;
 
     /** Acquirer reconciliation. */
-    public ?array $acquirer_reconciliation;
+    public $acquirer_reconciliation;
 
     /** Site ID. */
-    public ?string $site_id;
+    public $site_id;
 
     /** Sponsor ID. */
-    public ?int $sponsor_id;
+    public $sponsor_id;
 
     /** Operation type. */
-    public ?string $operation_type;
+    public $operation_type;
 
     /** Order ID. */
-    public ?int $order_id;
+    public $order_id;
 
     /** Order. */
-    public ?array $order;
+    public $order;
 
     /** Brand ID. */
-    public ?string $brand_id;
+    public $brand_id;
 
     /** Build version. */
-    public ?string $build_version;
+    public $build_version;
 
     /** Binary mode. */
-    public ?bool $binary_mode;
+    public $binary_mode;
 
     /** External reference. */
-    public ?string $external_reference;
+    public $external_reference;
 
     /** Financing group. */
-    public ?string $financing_group;
+    public $financing_group;
 
     /** Status. */
-    public ?string $status;
+    public $status;
 
     /** Status detail. */
-    public ?string $status_detail;
+    public $status_detail;
 
     /** Store ID. */
-    public ?string $store_id;
+    public $store_id;
 
     /** Taxes amount. */
-    public ?int $taxes_amount;
+    public $taxes_amount;
 
     /** Date created. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Live Mode. */
-    public ?bool $live_mode;
+    public $live_mode;
 
     /** Last modified date. */
-    public ?string $date_last_updated;
+    public $date_last_updated;
 
     /** Date of expiration. */
-    public ?string $date_of_expiration;
+    public $date_of_expiration;
 
     /** Deduction schema. */
-    public ?string $deduction_schema;
+    public $deduction_schema;
 
     /** Approval date. */
-    public ?string $date_approved;
+    public $date_approved;
 
     /** Money release date. */
-    public ?string $money_release_date;
+    public $money_release_date;
 
     /** Money release schema. */
-    public ?string $money_release_schema;
+    public $money_release_schema;
 
     /** Money release status. */
-    public ?string $money_release_status;
+    public $money_release_status;
 
     /** Currency ID. */
-    public ?string $currency_id;
+    public $currency_id;
 
     /** Transaction amount. */
-    public ?float $transaction_amount;
+    public $transaction_amount;
 
     /** Transaction amount refunded. */
-    public ?float $transaction_amount_refunded;
+    public $transaction_amount_refunded;
 
     /** Payer. */
-    public array|object|null $payer;
+    public $payer;
 
     /** Collector ID. */
-    public ?int $collector_id;
+    public $collector_id;
 
     /** Counter currency. */
-    public ?string $counter_currency;
+    public $counter_currency;
 
     /** Payment method ID. */
-    public ?string $payment_method_id;
+    public $payment_method_id;
 
     /** Payment method. */
-    public array|object|null $payment_method;
+    public $payment_method;
 
     /** Payment type ID. */
-    public ?string $payment_type_id;
+    public $payment_type_id;
 
     /** Pos ID. */
-    public ?string $pos_id;
+    public $pos_id;
 
     /** Transaction details. */
-    public array|object|null $transaction_details;
+    public $transaction_details;
 
     /** Fee details. */
-    public ?array $fee_details;
+    public $fee_details;
 
     /** Differential pricing ID. */
-    public ?string $differential_pricing_id;
+    public $differential_pricing_id;
 
     /** Application fee. */
-    public ?float $application_fee;
+    public $application_fee;
 
     /** Authorization code. */
-    public ?string $authorization_code;
+    public $authorization_code;
 
     /** Captured. */
-    public ?bool $captured;
+    public $captured;
 
     /** Card. */
-    public array|object|null $card;
+    public $card;
 
     /** Call for authorize ID. */
-    public ?string $call_for_authorize_id;
+    public $call_for_authorize_id;
 
     /** Statement descriptor. */
-    public ?string $statement_descriptor;
+    public $statement_descriptor;
 
     /** Shipping amount. */
-    public ?float $shipping_amount;
+    public $shipping_amount;
 
     /** Additional info. */
-    public array|object|null $additional_info;
+    public $additional_info;
 
     /** Coupon amount. */
-    public ?float $coupon_amount;
+    public $coupon_amount;
 
     /** Installments. */
-    public ?int $installments;
+    public $installments;
 
     /** Token. */
-    public ?string $token;
+    public $token;
 
     /** Description. */
-    public ?string $description;
+    public $description;
 
     /** Notification url. */
-    public ?string $notification_url;
+    public $notification_url;
 
     /** Issuer ID. */
-    public ?string $issuer_id;
+    public $issuer_id;
 
     /** Processing mode. */
-    public ?string $processing_mode;
+    public $processing_mode;
 
     /** Merchant account ID. */
-    public ?string $merchant_account_id;
+    public $merchant_account_id;
 
     /** Merchant number. */
-    public ?string $merchant_number;
+    public $merchant_number;
 
     /** Metadata. */
-    public array|object|null $metadata;
+    public $metadata;
 
     /** Callback url. */
-    public ?string $callback_url;
+    public $callback_url;
 
     /** Coupon code. */
-    public ?string $coupon_code;
+    public $coupon_code;
 
     /** Marketplace owner. */
-    public ?string $marketplace_owner;
+    public $marketplace_owner;
 
     /** Integrator ID. */
-    public ?string $integrator_id;
+    public $integrator_id;
 
     /** Corporation ID. */
-    public ?string $corporation_id;
+    public $corporation_id;
 
     /** Platform ID. */
-    public ?string $platform_id;
+    public $platform_id;
 
     /** Charges details. */
-    public ?array $charges_details;
+    public $charges_details;
 
     /** Taxes. */
-    public ?array $taxes;
+    public $taxes;
 
     /** Net amount. */
-    public ?float $net_amount;
+    public $net_amount;
 
     /** Point of interaction. */
-    public array|object|null $point_of_interaction;
+    public $point_of_interaction;
 
     /** Accounts info. */
-    public array|object|null $accounts_info;
+    public $accounts_info;
 
     /** Tags. */
-    public array|object|null $tags;
+    public $tags;
 
     /** Refunds. */
-    public ?array $refunds;
+    public $refunds;
 
     /** 3DS info. */
-    public array|object|null $three_ds_info;
+    public $three_ds_info;
 
     private $map = [
         "payer" => "MercadoPago\Resources\Payment\Payer",

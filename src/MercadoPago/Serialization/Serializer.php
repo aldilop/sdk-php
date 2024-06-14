@@ -13,12 +13,12 @@ class Serializer
      * @param mixed $data data to be deserialized.
      * @return \MercadoPago\Net\MPResource deserialized object.
      */
-    public static function deserializeFromJson(mixed $entity, mixed $data): MPResource
+    public static function deserializeFromJson($entity, $data): MPResource
     {
         return self::_deserializeFromJson($entity, $data);
     }
 
-    private static function _deserializeFromJson(mixed $entity, mixed $data): object|null
+    private static function _deserializeFromJson($entity, $data)
     {
         if (!$data) {
             return null;

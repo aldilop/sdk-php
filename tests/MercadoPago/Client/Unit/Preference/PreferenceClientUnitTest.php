@@ -12,7 +12,7 @@ use MercadoPago\Tests\Client\Unit\Base\BaseClient;
  */
 final class PreferenceClientUnitTest extends BaseClient
 {
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Preference/preference_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 201);
@@ -23,19 +23,19 @@ final class PreferenceClientUnitTest extends BaseClient
         $client = new PreferenceClient();
         $preference = $client->create($this->createRequest());
 
-        $this->assertSame(201, $preference ->getResponse()->getStatusCode());
-        $this->assertSame("111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> id);
-        $this->assertSame("5887075667929427", $preference -> client_id);
-        $this->assertSame("2023-08-22T08:11:50.310-04:00", $preference -> date_created);
-        $this->assertSame("https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> init_point);
-        $this->assertSame("MP-MKT-5887075667929427", $preference -> marketplace);
-        $this->assertSame("test_reference", $preference -> external_reference);
-        $this->assertSame("test name", $preference ->payer->name);
-        $this->assertSame("test surname", $preference ->payer->surname);
-        $this->assertSame("4567", $preference ->items[0]->id);
+        $this->assertEquals(201, $preference ->getResponse()->getStatusCode());
+        $this->assertEquals("111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> id);
+        $this->assertEquals("5887075667929427", $preference -> client_id);
+        $this->assertEquals("2023-08-22T08:11:50.310-04:00", $preference -> date_created);
+        $this->assertEquals("https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> init_point);
+        $this->assertEquals("MP-MKT-5887075667929427", $preference -> marketplace);
+        $this->assertEquals("test_reference", $preference -> external_reference);
+        $this->assertEquals("test name", $preference ->payer->name);
+        $this->assertEquals("test surname", $preference ->payer->surname);
+        $this->assertEquals("4567", $preference ->items[0]->id);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Preference/preference_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -47,19 +47,19 @@ final class PreferenceClientUnitTest extends BaseClient
         $preference_id = "111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7";
         $preference = $client->get($preference_id);
 
-        $this->assertSame(200, $preference->getResponse()->getStatusCode());
-        $this->assertSame("111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> id);
-        $this->assertSame("5887075667929427", $preference -> client_id);
-        $this->assertSame("2023-08-22T08:11:50.310-04:00", $preference -> date_created);
-        $this->assertSame("https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> init_point);
-        $this->assertSame("MP-MKT-5887075667929427", $preference -> marketplace);
-        $this->assertSame("test_reference", $preference -> external_reference);
-        $this->assertSame("test name", $preference ->payer->name);
-        $this->assertSame("test surname", $preference ->payer->surname);
-        $this->assertSame("4567", $preference ->items[0]->id);
+        $this->assertEquals(200, $preference->getResponse()->getStatusCode());
+        $this->assertEquals("111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> id);
+        $this->assertEquals("5887075667929427", $preference -> client_id);
+        $this->assertEquals("2023-08-22T08:11:50.310-04:00", $preference -> date_created);
+        $this->assertEquals("https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> init_point);
+        $this->assertEquals("MP-MKT-5887075667929427", $preference -> marketplace);
+        $this->assertEquals("test_reference", $preference -> external_reference);
+        $this->assertEquals("test name", $preference ->payer->name);
+        $this->assertEquals("test surname", $preference ->payer->surname);
+        $this->assertEquals("4567", $preference ->items[0]->id);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Preference/preference_update.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -71,12 +71,12 @@ final class PreferenceClientUnitTest extends BaseClient
         $preference_id = "111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7";
         $preference = $client->update($preference_id, $this->updateRequest());
 
-        $this->assertSame(200, $preference ->getResponse()->getStatusCode());
-        $this->assertSame("111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> id);
-        $this->assertSame("https://www.test.com", $preference -> notification_url);
+        $this->assertEquals(200, $preference ->getResponse()->getStatusCode());
+        $this->assertEquals("111111111-31b00b3b-3572-4fbb-a090-12c1dedc4dd7", $preference -> id);
+        $this->assertEquals("https://www.test.com", $preference -> notification_url);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/Preference/preference_search.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -88,11 +88,11 @@ final class PreferenceClientUnitTest extends BaseClient
         $search_request = new \MercadoPago\Net\MPSearchRequest(5, 0, ["external_reference" => "998476493"]);
         $search_result = $client->search($search_request);
 
-        $this->assertSame(200, $search_result->getResponse()->getStatusCode());
-        $this->assertSame(1, count($search_result->elements));
-        $this->assertSame("11111111-fd23cead-c53a-43d1-946c-4afef6f806f6", $search_result -> elements[0]->id);
-        $this->assertSame(1, $search_result->next_offset);
-        $this->assertSame(1, $search_result->total);
+        $this->assertEquals(200, $search_result->getResponse()->getStatusCode());
+        $this->assertEquals(1, count($search_result->elements));
+        $this->assertEquals("11111111-fd23cead-c53a-43d1-946c-4afef6f806f6", $search_result -> elements[0]->id);
+        $this->assertEquals(1, $search_result->next_offset);
+        $this->assertEquals(1, $search_result->total);
     }
 
     private function createRequest(): array

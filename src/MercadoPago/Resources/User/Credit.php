@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\User;
 class Credit
 {
     /** The amount of consumed credit. */
-    public ?int $consumed;
+    public $consumed;
 
     /** The credit level ID. */
-    public ?string $credit_level_id;
+    public $credit_level_id;
 
     /** The user's credit rank. */
-    public ?string $rank;
+    public $rank;
 }

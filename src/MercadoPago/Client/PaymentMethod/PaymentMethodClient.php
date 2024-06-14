@@ -13,10 +13,10 @@ use MercadoPago\Serialization\Serializer;
 /** Client responsible for performing payment methods actions. */
 final class PaymentMethodClient extends MercadoPagoClient
 {
-    private const URL = "/v1/payment_methods";
+    const URL = "/v1/payment_methods";
 
     /** Default constructor. Uses the default http client used by the SDK or custom http client provided. */
-    public function __construct(?MPHttpClient $MPHttpClient = null)
+    public function __construct(MPHttpClient $MPHttpClient = null)
     {
         parent::__construct($MPHttpClient ?: MercadoPagoConfig::getHttpClient());
     }
@@ -28,7 +28,7 @@ final class PaymentMethodClient extends MercadoPagoClient
      * @throws \MercadoPago\Exceptions\MPApiException if the request fails.
      * @throws \Exception if the request fails.
      */
-    public function list(?RequestOptions $request_options = null): PaymentMethodResult
+    public function list(RequestOptions $request_options = null): PaymentMethodResult
     {
         $response = parent::send(self::URL, HttpMethod::GET, null, null, $request_options);
         $result_data = array("data" => $response->getContent());

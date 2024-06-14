@@ -6,11 +6,11 @@ namespace MercadoPago\Resources\Payment;
 class PaymentDiscounts
 {
     /** Discount type. */
-    public ?string $type;
+    public $type;
 
     /** Discount value. */
-    public ?float $value;
+    public $value;
 
     /** Discount limit date. */
-    public ?string $limit_date;
+    public $limit_date;
 }

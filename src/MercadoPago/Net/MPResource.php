@@ -5,9 +5,9 @@ namespace MercadoPago\Net;
 /** MPResource class. */
 class MPResource
 {
-    private MPResponse $response;
+    private $response;
 
-    public function setResponse(MPResponse $response): void
+    public function setResponse(MPResponse $response)
     {
         $this->response = $response;
     }

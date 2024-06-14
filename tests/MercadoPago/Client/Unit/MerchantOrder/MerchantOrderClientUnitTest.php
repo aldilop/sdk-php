@@ -12,7 +12,7 @@ use MercadoPago\Tests\Client\Unit\Base\BaseClient;
  */
 final class MerchantOrderClientUnitTest extends BaseClient
 {
-    public function testCreateSuccess(): void
+    public function testCreateSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/MerchantOrder/merchant_order_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 201);
@@ -23,19 +23,19 @@ final class MerchantOrderClientUnitTest extends BaseClient
         $client = new MerchantOrderClient();
         $merchant_order = $client->create($this->createRequest());
 
-        $this->assertSame(201, $merchant_order->getResponse()->getStatusCode());
-        $this->assertSame(11223344550, $merchant_order->id);
-        $this->assertSame("opened", $merchant_order->status);
-        $this->assertSame("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $merchant_order->preference_id);
-        $this->assertSame("2023-09-12T13:55:01.933-04:00", $merchant_order->date_created);
-        $this->assertSame("2023-09-12T13:55:01.933-04:00", $merchant_order->last_updated);
-        $this->assertSame("MP-MKT-5887075667929427", $merchant_order->marketplace);
-        $this->assertSame("test_reference", $merchant_order->external_reference);
-        $this->assertSame(123456789, $merchant_order->collector->id);
-        $this->assertSame("MLB_SELLER", $merchant_order->collector->nickname);
+        $this->assertEquals(201, $merchant_order->getResponse()->getStatusCode());
+        $this->assertEquals(11223344550, $merchant_order->id);
+        $this->assertEquals("opened", $merchant_order->status);
+        $this->assertEquals("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $merchant_order->preference_id);
+        $this->assertEquals("2023-09-12T13:55:01.933-04:00", $merchant_order->date_created);
+        $this->assertEquals("2023-09-12T13:55:01.933-04:00", $merchant_order->last_updated);
+        $this->assertEquals("MP-MKT-5887075667929427", $merchant_order->marketplace);
+        $this->assertEquals("test_reference", $merchant_order->external_reference);
+        $this->assertEquals(123456789, $merchant_order->collector->id);
+        $this->assertEquals("MLB_SELLER", $merchant_order->collector->nickname);
     }
 
-    public function testGetSuccess(): void
+    public function testGetSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/MerchantOrder/merchant_order_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -47,19 +47,19 @@ final class MerchantOrderClientUnitTest extends BaseClient
         $merchant_order_id = 11223344550;
         $merchant_order = $client->get($merchant_order_id);
 
-        $this->assertSame(200, $merchant_order->getResponse()->getStatusCode());
-        $this->assertSame(11223344550, $merchant_order->id);
-        $this->assertSame("opened", $merchant_order->status);
-        $this->assertSame("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $merchant_order->preference_id);
-        $this->assertSame("2023-09-12T13:55:01.933-04:00", $merchant_order->date_created);
-        $this->assertSame("2023-09-12T13:55:01.933-04:00", $merchant_order->last_updated);
-        $this->assertSame("MP-MKT-5887075667929427", $merchant_order->marketplace);
-        $this->assertSame("test_reference", $merchant_order->external_reference);
-        $this->assertSame(123456789, $merchant_order->collector->id);
-        $this->assertSame("MLB_SELLER", $merchant_order->collector->nickname);
+        $this->assertEquals(200, $merchant_order->getResponse()->getStatusCode());
+        $this->assertEquals(11223344550, $merchant_order->id);
+        $this->assertEquals("opened", $merchant_order->status);
+        $this->assertEquals("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $merchant_order->preference_id);
+        $this->assertEquals("2023-09-12T13:55:01.933-04:00", $merchant_order->date_created);
+        $this->assertEquals("2023-09-12T13:55:01.933-04:00", $merchant_order->last_updated);
+        $this->assertEquals("MP-MKT-5887075667929427", $merchant_order->marketplace);
+        $this->assertEquals("test_reference", $merchant_order->external_reference);
+        $this->assertEquals(123456789, $merchant_order->collector->id);
+        $this->assertEquals("MLB_SELLER", $merchant_order->collector->nickname);
     }
 
-    public function testUpdateSuccess(): void
+    public function testUpdateSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/MerchantOrder/merchant_order_base.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -71,19 +71,19 @@ final class MerchantOrderClientUnitTest extends BaseClient
         $merchant_order_id = 11223344550;
         $merchant_order = $client->update($merchant_order_id, $this->updateRequest());
 
-        $this->assertSame(200, $merchant_order->getResponse()->getStatusCode());
-        $this->assertSame(11223344550, $merchant_order->id);
-        $this->assertSame("opened", $merchant_order->status);
-        $this->assertSame("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $merchant_order->preference_id);
-        $this->assertSame("2023-09-12T13:55:01.933-04:00", $merchant_order->date_created);
-        $this->assertSame("2023-09-12T13:55:01.933-04:00", $merchant_order->last_updated);
-        $this->assertSame("MP-MKT-5887075667929427", $merchant_order->marketplace);
-        $this->assertSame("test_reference", $merchant_order->external_reference);
-        $this->assertSame(123456789, $merchant_order->collector->id);
-        $this->assertSame("MLB_SELLER", $merchant_order->collector->nickname);
+        $this->assertEquals(200, $merchant_order->getResponse()->getStatusCode());
+        $this->assertEquals(11223344550, $merchant_order->id);
+        $this->assertEquals("opened", $merchant_order->status);
+        $this->assertEquals("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $merchant_order->preference_id);
+        $this->assertEquals("2023-09-12T13:55:01.933-04:00", $merchant_order->date_created);
+        $this->assertEquals("2023-09-12T13:55:01.933-04:00", $merchant_order->last_updated);
+        $this->assertEquals("MP-MKT-5887075667929427", $merchant_order->marketplace);
+        $this->assertEquals("test_reference", $merchant_order->external_reference);
+        $this->assertEquals(123456789, $merchant_order->collector->id);
+        $this->assertEquals("MLB_SELLER", $merchant_order->collector->nickname);
     }
 
-    public function testSearchSuccess(): void
+    public function testSearchSuccess()
     {
         $filepath = '../../../../Resources/Mocks/Response/MerchantOrder/merchant_order_search.json';
         $mock_http_request = $this->mockHttpRequest($filepath, 200);
@@ -96,11 +96,11 @@ final class MerchantOrderClientUnitTest extends BaseClient
         $search_request = new \MercadoPago\Net\MPSearchRequest(5, 0, ["preference_id" => $preference_id]);
         $search_result = $client->search($search_request);
 
-        $this->assertSame(200, $search_result->getResponse()->getStatusCode());
-        $this->assertSame(1, count($search_result->elements));
-        $this->assertSame("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $search_result->elements[0]->preference_id);
-        $this->assertSame(1, $search_result->next_offset);
-        $this->assertSame(1, $search_result->total);
+        $this->assertEquals(200, $search_result->getResponse()->getStatusCode());
+        $this->assertEquals(1, count($search_result->elements));
+        $this->assertEquals("123456789-ceb44a1c-6d7c-4996-99c6-24060542ed9f", $search_result->elements[0]->preference_id);
+        $this->assertEquals(1, $search_result->next_offset);
+        $this->assertEquals(1, $search_result->total);
     }
 
     private function createRequest(): array

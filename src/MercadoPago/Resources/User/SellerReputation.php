@@ -11,16 +11,16 @@ class SellerReputation
     use Mapper;
 
     /** The seller's level ID (null in this case). */
-    public ?string $level_id;
+    public $level_id;
 
     /** The power seller status (null in this case). */
-    public ?string $power_seller_status;
+    public $power_seller_status;
 
     /** User transaction metrics and statistics. */
-    public array|object|null $transactions;
+    public $transactions;
 
     /** User transaction metrics. */
-    public array|object|null $metrics;
+    public $metrics;
 
     public $map = [
         "transactions" => "MercadoPago\Resources\User\Transactions",

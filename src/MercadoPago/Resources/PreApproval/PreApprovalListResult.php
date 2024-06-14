@@ -11,67 +11,67 @@ class PreApprovalListResult
     use Mapper;
 
     /** Preapproval ID. */
-    public ?string $id;
+    public $id;
 
     /** Payer ID. */
-    public ?int $payer_id;
+    public $payer_id;
 
     /** Payer email. */
-    public ?string $payer_email;
+    public $payer_email;
 
     /** Return URL. */
-    public ?string $back_url;
+    public $back_url;
 
     /** Seller ID. */
-    public ?int $collector_id;
+    public $collector_id;
 
     /** Application ID. */
-    public ?int $application_id;
+    public $application_id;
 
     /** Preapproval status. */
-    public ?string $status;
+    public $status;
 
     /** Reason for the subscription. */
-    public ?string $reason;
+    public $reason;
 
     /** Preapproval reference value. */
-    public ?string $external_reference;
+    public $external_reference;
 
     /** Creation date. */
-    public ?string $date_created;
+    public $date_created;
 
     /** Last modified date. */
-    public ?string $last_modified;
+    public $last_modified;
 
     /** The subscription's starting point. */
-    public ?string $init_point;
+    public $init_point;
 
     /** The pre-approval plan ID. */
-    public ?string $preapproval_plan_id;
+    public $preapproval_plan_id;
 
     /** The details of auto-recurring. */
-    public array|object|null $auto_recurring;
+    public $auto_recurring;
 
     /** The summarized subscription details. */
-    public array|object|null $summarized;
+    public $summarized;
 
     /** The next payment date. */
-    public ?string $next_payment_date;
+    public $next_payment_date;
 
     /** The payment method ID. */
-    public ?string $payment_method_id;
+    public $payment_method_id;
 
     /** The credit card ID. */
-    public ?string $card_id;
+    public $card_id;
 
     /** First invoice offset. */
     public $first_invoice_offset;
 
     /** Payer first name. */
-    public ?string $payer_first_name;
+    public $payer_first_name;
 
     /** Payer last name. */
-    public ?string $payer_last_name;
+    public $payer_last_name;
 
     public $map = [
         "auto_recurring" => "MercadoPago\Resources\PreApproval\AutoRecurring",

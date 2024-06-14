@@ -6,5 +6,5 @@ namespace MercadoPago\Client\Payment;
 class PaymentRefundCreateRequest
 {
     /** Amount to be refunded. */
-    public float $amount;
+    public $amount;
 }
